@@ -35,8 +35,8 @@ namespace ConsoleApplication1
                 CCPRestSDK.CCPRestSDK api = new CCPRestSDK.CCPRestSDK();
                 //ip格式如下，不带https://
                 bool isInit = api.init("app.cloopen.com", "8883");
-                api.setAccount("", "");
-                api.setAppId("");
+                api.setAccount("aaf98f8952a572be0152a64ce78c01ec", "c008b9fd349744d08f94cec4d3966884");
+                api.setAppId("aaf98f8952a572be0152a6505b7e0201");
 
                 try
                 {
