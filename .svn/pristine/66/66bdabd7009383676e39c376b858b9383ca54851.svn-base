@@ -1,0 +1,27 @@
+﻿using Chicken.YFModels;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.Tools
+{
+    public class AppData
+    {
+        //public const string ChickenURL = "http://api.yfiot.com/chicken2/";
+        public const string ChickenURL = "http://192.168.1.6:11111/";
+
+        public const string YFIOURI = "http://api.yfiot.com/io/getIoValues";
+
+        public const string ChickenOauth2URL = ChickenURL + "oauth2/token";
+        public const string ChickenAppId = "B2A40576-03FE-408B-9C05-9E2A8CEA1381";
+        public const string EZOPENURL = "https://open.ys7.com/api/lapp/token/get";
+        public const string EZAPPKEY = "d2560ed3d4ec4ff5824608e9852b2dea";
+        public const string EZSECRET = "09d2dc9e7a5c0d6e9194223495777936";
+
+
+
+        public static ConcurrentDictionary<int, UserInfo> UserList = new ConcurrentDictionary<int, UserInfo>();
+    }
+}

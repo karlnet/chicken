@@ -2300,23 +2300,23 @@ Ext.define('MyApp2.view.hmi.EditorController', {
     }
   },
 
-  canvasData: [],
-  canvasDataScript: [],
+  canvasData: {},
+  canvasDataScript: {},
 
   onScript: function() {
     var text1 = this.lookupReference('textfield1').value;
-    var color1 = this.lookupReference('textarea1').value;
+    // var color1 = this.lookupReference('textarea1').value;
 
     theCanvas.item(0).shapeScript = {
-      'text': text1
+      'myValue': text1
     };
-    theCanvas.item(1).shapeScript = {
-      'fill': color1
-    };
+    // theCanvas.item(1).shapeScript = {
+    //   'fill': color1
+    // };
 
     // theCanvas.item(2).shapeScript={'width':10};
 
-    console.log(text1, color1);
+    // console.log(text1, color1);
   },
 
   // function objToStrMap(obj) {
@@ -2329,38 +2329,40 @@ Ext.define('MyApp2.view.hmi.EditorController', {
 
   onSaveCanvas: function() {
 
-    this.canvasData.splice(0, this.canvasData.length);
-    this.canvasDataScript.splice(0, this.canvasDataScript.length);
+    // this.canvasData.splice(0, this.canvasData.length);
+    // this.canvasDataScript.splice(0, this.canvasDataScript.length);
+    this.canvasData = {};
+    this.canvasDataScript = {};
 
     for (var i = 0, length = theCanvas.size(); i < length; i++) {
       var script = theCanvas.item(i).shapeScript;
       console.log(theCanvas.item(i), script);
-      // var scripts = Object.keys(script);
-      for (var key in scripts) {
-        // console.log(key, script[key]);
+      // var scriptKeys = Object.keys(script);
+      for (var key in script) {
+        console.log(key, script[key]);
         var re = /\$[\d]+/g;
-        var items = script[key].match(re);
+        var scriptValues = script[key].match(re);
         // var scriptContent=script[key].replace(re,'__value');
         var scriptContent = script[key];
         scriptContent = 'theCanvas.item(' + i + ').set(\'' + key + '\',' + scriptContent + ').setCoords()';
-        console.log(items, scriptContent);
-        if (items != null) {
-          var newItems = Ext.Array.unique(items);
-          for (var j = 0, newItemsLength = newItems.length; j < newItemsLength; j++) {
-            var item = newItems[j].slice(1);
-            console.log(item, typeof this.canvasDataScript[0]);
-            if (typeof this.canvasDataScript[item] === 'undefined') {
+        console.log(scriptValues, scriptContent);
+        if (scriptValues != null) {
+          var newScriptValues = Ext.Array.unique(scriptValues);
+          for (var j = 0, newScriptValuesLength = newScriptValues.length; j < newScriptValuesLength; j++) {
+            var newScriptValue = newScriptValues[j].slice(1);
+            // console.log(item, typeof this.canvasDataScript[0]);
+            if (typeof this.canvasDataScript[newScriptValue] === 'undefined') {
               // console.log('jjj');
-              this.canvasDataScript[item] = [];
-              this.canvasData[item] = 0;
+              this.canvasDataScript[newScriptValue] = [];
+              this.canvasData[newScriptValue] = 0;
             }
             // if (typeof this.canvasDataScript[item]['p' + item[1]] === 'undefined') {
             //   this.canvasDataScript[item[0]]['p' + item[1]] = [];
             //   this.canvasData[item[0]]['p' + item[1]] = 0;
             //   console.log(this.canvasDataScript[item[0]]);
             // }
-            this.canvasDataScript[item].push(scriptContent);
-            console.log(item, this.canvasDataScript[item]);
+            this.canvasDataScript[newScriptValue].push(scriptContent);
+            console.log(newScriptValue, this.canvasDataScript[newScriptValue]);
           }
 
         } else {
@@ -2370,16 +2372,15 @@ Ext.define('MyApp2.view.hmi.EditorController', {
       }
 
     }
+
+    console.log(this.canvasDataScript);
+    console.log(this.canvasData);
   },
 
-  // console.log(this.canvasDataScript);
-  // console.log(this.canvasData);
 
-
-
-  setCanvasData: function(no, newData) {
+  setCanvasData: function(newData) {
     // console.log(newData);
-    var oldData = this.canvasData[no];
+    var oldData = this.canvasData;
     console.log(oldData);
     var re = /\$[\d]+/g;
 
@@ -2390,13 +2391,13 @@ Ext.define('MyApp2.view.hmi.EditorController', {
       }
       oldData[key] = newValue;
 
-      var script = this.canvasDataScript[no];
-      console.log(this.canvasDataScript);
+      var script = this.canvasDataScript[key];
+      // console.log(this.canvasDataScript);
       if (typeof script != 'undefined') {
         for (var num = 0; num < script.length; num++) {
 
           var scriptContent = script[num].replace(re, newValue);
-          // console.log(newData,scriptContent);
+          // console.log(num,newValue,scriptContent);
 
           // new Function(scriptContent);
           eval(scriptContent);
@@ -2435,8 +2436,9 @@ Ext.define('MyApp2.view.hmi.EditorController', {
 
     // var f=Ext.get('my-property-strokeWidthButton');
     // console.log(f);
-    // console.log("receive data...");
+    console.log("receive data...");
     var dataHub = $.connection.DataTickerHub;
+    console.log(dataHub);
 
     var init = function init() {
       // ticker.server.getAllStocks().done(function (stocks) {
@@ -2454,8 +2456,8 @@ Ext.define('MyApp2.view.hmi.EditorController', {
       //     p1: 1,
       //     p2: 22.5
       //   }
-      }
-      // dataHub.server.sendCommand(JSON.stringify(cmd));
+    }
+    // dataHub.server.sendCommand(JSON.stringify(cmd));
     //}
 
     //
@@ -2470,9 +2472,9 @@ Ext.define('MyApp2.view.hmi.EditorController', {
 
     dataHub.client.updateNewData = function(data) {
       //
-      // var device = JSON.parse(data);
-      console.log(data);
-      // me.setCanvasData(0, device.Data);
+      var projectData = JSON.parse(data);
+      console.log(projectData);
+      me.setCanvasData(projectData);
 
     }
 

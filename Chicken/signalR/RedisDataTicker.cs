@@ -28,9 +28,11 @@ namespace Chicken.signalR
         public  ConcurrentDictionary<string, HashSet<MyUser>> ProjectUserConnections = new ConcurrentDictionary<string, HashSet<MyUser>>();
 
         // signalR hub ' Singleton instance
-        private readonly static Lazy<RedisDataTicker> _instance = new Lazy<RedisDataTicker>(() => new RedisDataTicker(GlobalHost.ConnectionManager.GetHubContext<DataTickerHub>().Clients));
+        //private readonly static Lazy<RedisDataTicker> _instance = new Lazy<RedisDataTicker>(() => new RedisDataTicker(GlobalHost.ConnectionManager.GetHubContext<DataTickerHub>().Clients));
+        private readonly static RedisDataTicker _instance = new RedisDataTicker();
 
-        private IHubConnectionContext<dynamic> signalRHubClients { get; set; }
+        //public IHubConnectionContext<dynamic> signalRHubClients { get; set; }
+        public IHubCallerConnectionContext<dynamic> signalRHubClients { get; set; }
 
         // redis client
         private StackExchange.Redis.ISubscriber subscriber = AppData.RedisConnection.GetSubscriber();
@@ -47,14 +49,14 @@ namespace Chicken.signalR
         {
             get
             {
-                return _instance.Value;
+                return _instance;
             }
         }
-        private RedisDataTicker(IHubConnectionContext<dynamic> clients)
+        private RedisDataTicker()//(IHubConnectionContext<dynamic> clients)
         {
-            signalRHubClients = clients;
+            //signalRHubClients = clients;
 
-            queueClient = QueueClient.CreateFromConnectionString(queueConnectionString, queueName);
+            //queueClient = QueueClient.CreateFromConnectionString(queueConnectionString, queueName);
 
         }
 
@@ -72,19 +74,8 @@ namespace Chicken.signalR
 
         private string GetAllDataFromRedis(string project)
         {
-            var projectId = redisCache.HashGet("User:Project", "zhangxb");
-            var projectDevices = redisCache.ListRange(projectId + ":Devices");
-            IEnumerable<string> data = projectDevices
-                            .Select(item =>
-                          {
-                              string deviceId = item.ToString();
-                              var deviceData = redisCache.HashGetAll(deviceId).ToStringDictionary();
-                              deviceData.Add("DeviceId", deviceId);
-                              var newDeviceData = JsonConvert.SerializeObject(deviceData);
-                              return newDeviceData;
-                          });
-
-            return JsonConvert.SerializeObject(data);
+            var projectData = redisCache.HashGetAll("project:" + project + ":values").ToStringDictionary();
+            return JsonConvert.SerializeObject(projectData);
         }
 
         public void SendCommandToQueue(string name,string data)
@@ -98,10 +89,7 @@ namespace Chicken.signalR
 
         public void GetAllData(string connectionId, string project)   // GetAllData  is  method for brower call throught  hub
         {
-            string projectData = "hello world"; //GetAllDataFromRedis(project);
-
-
-
+            string projectData = GetAllDataFromRedis(project);
             signalRHubClients.Client(connectionId).updateNewData(projectData);
 
         }

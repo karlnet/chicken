@@ -1,0 +1,16 @@
+﻿using Chicken.YFModels;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.Tools
+{
+    public class AppData
+    {
+        public const string AppId = "B2A40576-03FE-408B-9C05-9E2A8CEA1381";
+
+        public static ConcurrentDictionary<int, UserInfo> UserList = new ConcurrentDictionary<int, UserInfo>();
+    }
+}

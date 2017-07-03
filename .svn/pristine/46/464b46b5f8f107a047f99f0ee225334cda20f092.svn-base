@@ -1,0 +1,509 @@
+﻿using Chicken.Data;
+using Chicken.Data.Entities;
+using Chicken.DTOs;
+using Chicken.Models;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
+using System.Web.Http.Results;
+
+namespace Chicken.Controllers
+{
+    [RoutePrefix("Chicken")]
+    public class ChickenController : BaseApiController
+    {
+        public ChickenController(IRepository repo)
+            : base(repo)
+        {
+        }
+
+        [Route("GetProjectBatchInfo")]
+        public ApiModel GetProjectBatchInfo(int userid, int projectid)
+        {
+            ApiModel model = new ApiModel();
+            try
+            {
+                var batch = TheRepository.GetLastBatchInfo(projectid);
+                if (projectid == 0)
+                {
+                    model.info.status = 0;
+                    model.info.message = "查询失败，请输入projectid参数";
+                }
+                else if (batch == null || batch.SlaughterFlag_bit)
+                {
+                    model.info.status = 0;
+                    model.info.message = "查询失败，没有未出栏批次信息";
+                }
+                else
+                {
+                    model.info.status = 1;
+                    model.info.message = "查询成功";
+                    model.body = new BatchRM(batch);                   
+                }
+            }
+            catch (Exception ex)
+            {
+                //LoggerHelper.Error(ex);
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+            return model;
+        }
+        [Route("lairage")]
+        [HttpPost]
+        public IHttpActionResult lairage(BatchBM batchBM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApiModel model = new ApiModel();
+            try
+            {
+                if (!TheRepository.HasProject(batchBM.projectid))
+                {
+                    model.info.status = 0;
+                    model.info.message = "操作失败，请输入正确的projectid参数";
+                    return Ok(model);
+                }
+
+                var batch = TheRepository.GetLastBatchInfo(batchBM.projectid);
+                if (batch != null && !batch.SlaughterFlag_bit)
+                {
+                    model.info.status = 0;
+                    model.info.message = "操作失败，还有未出栏的批次";
+                    return Ok(model);
+                }
+
+                YFBatchRecord b = batchBM.Create(batch == null ? 1 : batch.BatchID_int + 1);
+
+                if (AppDbContext.Insert<YFBatchRecord>(b))
+                {
+                    model.info.status = 1;
+                    model.info.message = "操作成功";
+                    model.body = new BatchRM(b);
+                }
+                else
+                {
+                    model.info.status = 0;
+                    model.info.message = "入栏操作失败";
+                }                
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+
+        private YFBatchRecord GetBatchRecord(int projectid, int batchid, ApiModel model)
+        {
+            var batch = AppDbContext.Where<YFBatchRecord>(m => m.ProjectID_int == projectid && m.BatchID_int == batchid && m.SlaughterFlag_bit == false).FirstOrDefault();
+
+            if (batch == null)
+            {
+                model.info.status = 0;
+                model.info.message = "操作失败，未找到指定批次或此批次已出栏";
+                return null;
+            }
+            return batch;
+        }
+
+        [Route("addKicken")]
+        [HttpPost]
+        public IHttpActionResult addKicken(ChickenAddBM chickenAddBM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApiModel model = new ApiModel();
+            try
+            {
+                YFBatchRecord batch = GetBatchRecord(chickenAddBM.projectid, chickenAddBM.batchid, model);
+                if (batch == null)
+                { 
+                    return Ok(model);
+                }              
+
+                YFBatchRecordAddChicken b = chickenAddBM.Create();
+
+                if (AppDbContext.Insert<YFBatchRecordAddChicken>(b))
+                {
+                    model.info.status = 1;
+                    model.info.message = "操作成功";
+                }
+                else
+                {
+                    model.info.status = 0;
+                    model.info.message = "入栏操作失败";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+
+        private async Task<ApiModel> GetIOValues(int projectid, int userid,string token)
+        {
+            using (var client = new HttpClient())
+            {
+                var values = new Dictionary<string, string>{
+                     { "names", "AverageWeight,WaterYield,ElectricQuantity,MaterialWeight" },
+                     { "projectid", projectid.ToString() },
+                     { "userid", userid.ToString() },
+                     { "token", token }
+                };
+
+                var content = new FormUrlEncodedContent(values);
+                var response = await client.PostAsync("http://api.yfiot.com/io/getIoValues", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<ApiModel>();
+                }
+                return null;
+            }
+        }
+
+        private int GetChickenAddAmount(int projectid, int batchid)
+        {
+            int result = 0;
+            var chickenAddInfo = TheRepository.GetLastAddChickenInfo(projectid, batchid);
+            if (chickenAddInfo != null)
+                result = chickenAddInfo.ChickenAmount_int ?? 0 + chickenAddInfo.TotalChickenAmount_int ?? 0;
+            return result;
+        }
+
+        [Route("getBatchRecordWorkReport")]
+        [HttpGet]
+        public async Task<IHttpActionResult> getBatchRecordWorkReport(int userid, int projectid, int batchid)
+        {
+            ApiModel model = new ApiModel();
+
+            try
+            {
+                YFBatchRecord batch = GetBatchRecord(projectid, batchid, model);
+                if (batch == null)
+                {
+                    return Ok(model);
+                }
+
+                var dayReport = TheRepository.GetLastDayReport(projectid, batchid);
+
+                DayReportRM dayReportRM = new DayReportRM();
+                if (dayReport != null && (dayReport.DTCreate_datetime.ToShortDateString() == DateTime.Now.ToShortDateString()))
+                    dayReportRM = new DayReportRM(dayReport);
+                
+                dayReportRM.LairageDate = batch.Lairage_datatime.Value.ToString("yyyy-MM-dd");
+                dayReportRM.ChickenTypeID = batch.ChickenTypeID_int;
+                dayReportRM.Age = (DateTime.Now - batch.Lairage_datatime.Value).Days;
+                dayReportRM.TotalChickenAmount = batch.LairageAmount_int ?? 0;
+
+                var chickenAddInfo = TheRepository.GetLastAddChickenInfo(projectid, batchid);
+                if (chickenAddInfo != null)
+                    dayReportRM.TotalChickenAmount += chickenAddInfo.ChickenAmount_int ?? 0 + chickenAddInfo.TotalChickenAmount_int ?? 0;
+
+                var IOValues = await GetIOValues(projectid, userid, "1c52870b001e4d82924809662e3720e6");
+                if (IOValues == null)
+                {
+                    model.info.status = 0;
+                    model.info.message = "获取实时IO数据失败";
+                    return Ok(model);
+                }
+                JObject bodyAsJson = JObject.Parse(IOValues.body.ToString());
+            
+                var weight = (string)bodyAsJson["AverageWeight"];
+                var fodder = (string)bodyAsJson["MaterialWeight"];
+
+                dayReportRM.Weight = double.Parse(string.IsNullOrEmpty(weight) ? "0" : weight);
+                dayReportRM.FodderCumulant = double.Parse(string.IsNullOrEmpty(fodder) ? "0" : fodder);
+
+                model.info.status = 1;
+                model.info.message = "查询成功";
+                model.body = dayReportRM;
+
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+        [Route("insertOrUpdateWorkReport")]
+        [HttpPost]
+        public IHttpActionResult insertOrUpdateWorkReport(DayReportBM dayReportBM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApiModel model = new ApiModel();
+            try
+            {
+                YFBatchRecord batch = GetBatchRecord(dayReportBM.projectid, dayReportBM.batchid, model);
+                if (batch == null)
+                {
+                    return Ok(model);
+                }
+
+                var dayReport = TheRepository.GetLastDayReport(dayReportBM.projectid, dayReportBM.batchid);
+
+                if ((dayReport != null) && (dayReport.DTCreate_datetime.ToShortDateString() == DateTime.Now.ToShortDateString()))  //update
+                {
+                    dayReport.CoalCumulant_float = dayReportBM.coalCumulant;
+                    dayReport.DieAmount_int = dayReportBM.dieAmount;
+                    dayReport.Medicine_float = dayReportBM.medicine;
+                    dayReport.OtherItem_float = dayReportBM.otherItem;
+                    if (dayReportBM.remarks != null)
+                        dayReport.Remarks_nvarchar = dayReportBM.remarks;
+
+                    if (AppDbContext.Update<YFChickenDailyReport>(dayReport).Value)
+                    {
+                        model.info.status = 1;
+                        model.info.message = "日记录更新成功";
+                        model.body = dayReport;
+                    }
+                    else
+                    {
+                        model.info.status = 0;
+                        model.info.message = "日记录更新失败";
+                    }
+
+                } else
+                {
+                    var dayReport2 = dayReportBM.Create();
+
+                    if (dayReport == null)  // 0 day
+                    {
+                        dayReport2.TotalDieAmount_int = 0;
+                        dayReport2.TotalWaterCumulant_float = 0;
+                        dayReport2.TotalElectricCumulant_float = 0;
+                        dayReport2.TotalFodderCumulant_float = 0;
+                        dayReport2.TotalCoalCumulant_float = 0;
+                        dayReport2.TotalMedicine_float = 0;
+                        dayReport2.TotalOtherItem_float = 0;
+                        dayReport2.TotalChickenAmount_int = batch.LairageAmount_int;
+
+                    }
+                    else if (dayReport.DTCreate_datetime.ToShortDateString() != DateTime.Now.ToShortDateString()) //insert
+                    {
+                        dayReport2.TotalDieAmount_int = dayReport.TotalDieAmount_int + dayReport.DieAmount_int;
+                        dayReport2.TotalWaterCumulant_float = dayReport.TotalWaterCumulant_float + dayReport.WaterCumulant_float;
+                        dayReport2.TotalElectricCumulant_float = dayReport.TotalElectricCumulant_float + dayReport.ElectricCumulant_float;
+                        dayReport2.TotalFodderCumulant_float = dayReport.TotalFodderCumulant_float + dayReport.FodderCumulant_float;
+                        dayReport2.TotalCoalCumulant_float = dayReport.TotalCoalCumulant_float + dayReport.CoalCumulant_float;
+                        dayReport2.TotalMedicine_float = dayReport.TotalMedicine_float + dayReport.Medicine_float;
+                        dayReport2.TotalOtherItem_float = dayReport.TotalOtherItem_float + dayReport.OtherItem_float;
+                    }
+
+                    dayReport2.Day_int = (DateTime.Now - batch.Lairage_datatime.Value).Days;
+                    dayReport2.DTModify_datetime = DateTime.Now;
+                    dayReport2.DTCreate_datetime = DateTime.Now;
+
+                    if (AppDbContext.Insert<YFChickenDailyReport>(dayReport2))
+                    {
+                        model.info.status = 1;
+                        model.info.message = "日记录插入成功";
+                        model.body = dayReport2;
+                    }
+                    else
+                    {
+                        model.info.status = 0;
+                        model.info.message = "日记录插入失败";
+                    }
+                }               
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+            return Ok(model);
+        }
+        [Route("getBatchStatReport")]
+        [HttpGet]
+        public async Task<IHttpActionResult> getBatchStatReport(int userid, int projectid, int batchid)
+        {
+            ApiModel model = new ApiModel();
+            try
+            {
+                YFBatchRecord batch = GetBatchRecord(projectid, batchid, model);
+                if (batch == null)
+                {
+                    return Ok(model);
+                }
+                var dayReport = TheRepository.GetLastDayReport(projectid, batchid);
+                //var chickenAddInfo = TheRepository.GetLastAddChickenInfo(projectid, batchid);
+
+                var IOValues = await GetIOValues(projectid, userid, "b7e67334bda24613a7d9e6266f71bfd7");
+                if (IOValues == null)
+                {
+                    model.info.status = 0;
+                    model.info.message = "获取实时IO数据失败";
+                    return Ok(model);
+                }
+                JObject bodyAsJson = JObject.Parse(IOValues.body.ToString());
+
+                var strWeight = (string)bodyAsJson["AverageWeight"];
+                var strFodder = (string)bodyAsJson["MaterialWeight"];
+                var strElectric = (string)bodyAsJson["ElectricQuantity"];
+                var strWater = (string)bodyAsJson["WaterYield"];
+
+                double Weight = double.Parse(string.IsNullOrEmpty(strWeight) ? "0" : strWeight);
+                double Fodder = double.Parse(string.IsNullOrEmpty(strFodder) ? "0" : strFodder);
+                double Electric = double.Parse(string.IsNullOrEmpty(strElectric) ? "0" : strElectric);
+                double Water = double.Parse(string.IsNullOrEmpty(strWater) ? "0" : strWater);
+
+                DayStatRM dayStatRM = new DayStatRM(dayReport);  // has day report
+                dayStatRM.LairageDate = batch.Lairage_datatime.Value.ToString("yyyy-MM-dd");
+                dayStatRM.LairageAmount = batch.LairageAmount_int ?? 0;
+                dayStatRM.ChickenTypeID = batch.ChickenTypeID_int;
+                dayStatRM.Age = (DateTime.Now - batch.Lairage_datatime.Value).Days;
+                dayStatRM.TotalAddChickenAmount = GetChickenAddAmount(projectid, batchid);
+
+                dayStatRM.FodderCumulant = Fodder;
+                dayStatRM.Weight = Weight;
+                dayStatRM.WaterCumulant = Water;
+                dayStatRM.ElectricCumulant = Electric;
+                //dayStatRM.Evenness = Evenness;
+
+                if (dayReport == null)  // 0 day
+                {
+                    dayStatRM.TotalWaterCumulant = dayStatRM.WaterCumulant ;
+                    dayStatRM.TotalElectricCumulant = dayStatRM.ElectricCumulant ;
+                    dayStatRM.TotalFodderCumulant = dayStatRM.FodderCumulant ;
+                }
+                else if (dayReport.DTCreate_datetime.ToShortDateString() != DateTime.Now.ToShortDateString())       // no day report             
+                {
+                    dayStatRM.OtherItem = 0;
+                    dayStatRM.Medicine = 0;
+                    dayStatRM.DieAmount = 0;
+
+                    dayStatRM.TotalWaterCumulant = dayStatRM.WaterCumulant + dayReport.TotalWaterCumulant_float.Value+ dayReport.WaterCumulant_float.Value;
+                    dayStatRM.TotalElectricCumulant = dayStatRM.ElectricCumulant + dayReport.TotalElectricCumulant_float.Value+ dayReport.ElectricCumulant_float.Value; 
+                    dayStatRM.TotalFodderCumulant = dayStatRM.FodderCumulant + dayReport.TotalFodderCumulant_float.Value+ dayReport.FodderCumulant_float.Value;
+
+                    
+                }
+                else  // has day report
+                {
+                    dayStatRM.TotalWaterCumulant = dayStatRM.WaterCumulant + dayReport.TotalWaterCumulant_float.Value;
+                    dayStatRM.TotalElectricCumulant = dayStatRM.ElectricCumulant + dayReport.TotalElectricCumulant_float.Value;
+                    dayStatRM.TotalFodderCumulant = dayStatRM.FodderCumulant + dayReport.TotalFodderCumulant_float.Value;
+                }
+
+                dayStatRM.TotalChickenAmount = dayStatRM.LairageAmount + dayStatRM.TotalAddChickenAmount - dayStatRM.TotalDieAmount;
+
+                model.info.status = 1;
+                model.info.message = "日明细表查询成功";
+                model.body = dayStatRM;
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+            return Ok(model);
+        }
+
+        [Route("getBatchRecordWorkReportList")]
+        [HttpGet]
+        public async Task<IHttpActionResult> getBatchRecordWorkReportList(int userid, int projectid, int batchid)
+        {
+            ApiModel model = new ApiModel();
+            try
+            {
+                YFBatchRecord batch = GetBatchRecord(projectid, batchid, model);
+                if (batch == null)
+                {
+                    return Ok(model);
+                }
+                var dayReportList = TheRepository.GetAllDayReport(projectid, batchid).ToList();
+                if (dayReportList == null)  //  no data
+                {
+                    model.info.status = 0;
+                    model.info.message = "没有数据";
+                    return Ok(model);
+                }
+
+                var IOValues = await GetIOValues(projectid, userid, "b7e67334bda24613a7d9e6266f71bfd7");
+                if (IOValues == null)
+                {
+                    model.info.status = 0;
+                    model.info.message = "获取实时IO数据失败";
+                    return Ok(model);
+                }
+                JObject bodyAsJson = JObject.Parse(IOValues.body.ToString());
+
+                var strWeight = (string)bodyAsJson["AverageWeight"];
+                var strFodder = (string)bodyAsJson["MaterialWeight"];
+                var strElectric = (string)bodyAsJson["ElectricQuantity"];
+                var strWater = (string)bodyAsJson["WaterYield"];
+
+                double Weight = double.Parse(string.IsNullOrEmpty(strWeight) ? "0" : strWeight);
+                double Fodder = double.Parse(string.IsNullOrEmpty(strFodder) ? "0" : strFodder);
+                double Electric = double.Parse(string.IsNullOrEmpty(strElectric) ? "0" : strElectric);
+                double Water = double.Parse(string.IsNullOrEmpty(strWater) ? "0" : strWater);
+
+                var dayReport = dayReportList.LastOrDefault();
+                if (dayReport.DTCreate_datetime.ToShortDateString() != DateTime.Now.ToShortDateString())       // no day report             
+                {
+                    YFChickenDailyReport newDayReport = new YFChickenDailyReport();
+                    newDayReport.TotalWaterCumulant_float = dayReport.Weight_float + dayReport.TotalWaterCumulant_float.Value;
+                    newDayReport.TotalElectricCumulant_float = dayReport.ElectricCumulant_float + dayReport.TotalElectricCumulant_float.Value;
+                    newDayReport.TotalFodderCumulant_float = dayReport.FodderCumulant_float + dayReport.TotalFodderCumulant_float.Value;
+                    newDayReport.TotalCoalCumulant_float = dayReport.FodderCumulant_float + dayReport.TotalCoalCumulant_float ?? 0;
+                    newDayReport.TotalMedicine_float = dayReport.Medicine_float + dayReport.TotalMedicine_float ?? 0;
+                    newDayReport.TotalOtherItem_float = dayReport.OtherItem_float + dayReport.TotalOtherItem_float ?? 0;
+                    newDayReport.TotalDieAmount_int = dayReport.DieAmount_int + dayReport.TotalDieAmount_int ?? 0;
+                    dayReportList.Add(newDayReport);
+                }
+
+                dayReport = dayReportList.LastOrDefault();
+
+                dayReport.WaterCumulant_float = Water;
+                dayReport.ElectricCumulant_float = Electric;
+                dayReport.FodderCumulant_float = Fodder;
+                dayReport.Weight_float = Weight;
+
+                DayStatListRM dayStatListRM = new DayStatListRM(dayReportList);
+                dayStatListRM.LairageDate = batch.Lairage_datatime.Value.ToString("yyyy-MM-dd");
+                dayStatListRM.LairageAmount = batch.LairageAmount_int.Value;
+                dayStatListRM.ChickenTypeID = batch.ChickenTypeID_int;
+
+                int totalDieAmount = dayReport.DieAmount_int.Value + dayReport.TotalDieAmount_int.Value;
+                dayStatListRM.TotalChickenAmount = dayStatListRM.LairageAmount + GetChickenAddAmount(projectid, batchid) - totalDieAmount;
+
+                model.info.status = 1;
+                model.info.message = "月明细查询成功";
+                model.body = dayStatListRM;
+
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+    }
+
+}

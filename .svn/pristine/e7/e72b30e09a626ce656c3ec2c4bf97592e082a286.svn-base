@@ -1,0 +1,39 @@
+﻿using Chicken.Data.Entities;
+using Chicken.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.Data
+{
+    public class Repository : IRepository
+    {
+        private AppDbContext db;  
+        public Repository(AppDbContext ctx)
+        {
+            db = ctx;    
+        }
+        public YFBatchRecord GetLastBatchInfo(int projectid) {
+            return db.YFBatchRecords.Where(m => m.ProjectID_int == projectid).OrderByDescending(m => m.BatchID_int).FirstOrDefault();
+        }
+        public bool HasProject(int projectid)
+        {
+            return db.IsExists<YFProject>(m => m.ProjectID_int == projectid);
+        }
+
+        public YFBatchRecordAddChicken GetLastAddChickenInfo(int projectid,int batchid)
+        {
+            return db.Where<YFBatchRecordAddChicken>(m => m.BatchID_int == batchid && m.ProjectID_int == projectid).OrderByDescending(m => m.DTCreate_datetime).FirstOrDefault();
+        }
+
+        public YFChickenDailyReport GetLastDayReport(int projectid, int batchid)
+        {
+            return db.Where<YFChickenDailyReport>(m => m.ProjectID_int == projectid && m.BatchID_int == batchid).OrderByDescending(m => m.DTCreate_datetime).FirstOrDefault();
+        }
+
+
+
+
+    }
+}

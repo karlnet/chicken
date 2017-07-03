@@ -1,0 +1,36 @@
+﻿using Chicken.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.Models
+{
+    public class ChickenAddBM
+    {
+        [Required]
+        public int userid { get; set; }
+        [Required]
+        public int projectid { get; set; }
+        [Required]
+        public int batchid { get; set; }
+        [Required]
+        public int chickenAmount { get; set; }
+
+
+        public YFBatchRecordAddChicken Create()
+        {
+            var time = DateTime.Now;
+            return new YFBatchRecordAddChicken()
+            {
+                DTCreate_datetime = time,
+                DTModify_datetime = time,
+                BatchID_int = batchid,
+                ProjectID_int = projectid,
+                ChickenAmount_int = chickenAmount
+
+            };
+        }
+    }
+}

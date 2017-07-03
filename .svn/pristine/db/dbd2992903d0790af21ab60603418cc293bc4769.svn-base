@@ -1,0 +1,234 @@
+﻿using Chicken.Data;
+using Chicken.Data.Entities;
+using Chicken.DTOs;
+using Chicken.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Web.Http.Results;
+
+namespace Chicken.Controllers
+{
+    [RoutePrefix("Chicken")]
+    public class ChickenController : BaseApiController
+    {
+        public ChickenController(IRepository repo)
+            : base(repo)
+        {
+        }
+
+        [Route("GetProjectBatchInfo")]
+        public ApiModel GetProjectBatchInfo(int userid, int projectid)
+        {
+            ApiModel model = new ApiModel();
+            try
+            {
+                var batch = TheRepository.GetLastBatchInfo(projectid);
+                if (projectid == 0)
+                {
+                    model.info.status = 0;
+                    model.info.message = "查询失败，请输入projectid参数";
+                }
+                else if (batch == null || batch.SlaughterFlag_bit)
+                {
+                    model.info.status = 0;
+                    model.info.message = "查询失败，没有未出栏批次信息";
+                }
+                else
+                {
+                    model.info.status = 1;
+                    model.info.message = "查询成功";
+                    model.body = new BatchRM(batch);                   
+                }
+            }
+            catch (Exception ex)
+            {
+                //LoggerHelper.Error(ex);
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+            return model;
+        }
+        [Route("lairage")]
+        [HttpPost]
+        public IHttpActionResult lairage(BatchBM batchBM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApiModel model = new ApiModel();
+            try
+            {
+                if (!TheRepository.HasProject(batchBM.projectid))
+                {
+                    model.info.status = 0;
+                    model.info.message = "操作失败，请输入正确的projectid参数";
+                    return Ok(model);
+                }
+
+                var batch = TheRepository.GetLastBatchInfo(batchBM.projectid);
+                if (batch != null && !batch.SlaughterFlag_bit)
+                {
+                    model.info.status = 0;
+                    model.info.message = "操作失败，还有未出栏的批次";
+                    return Ok(model);
+                }
+
+                YFBatchRecord b = batchBM.Create(batch == null ? 1 : batch.BatchID_int + 1);
+
+                if (AppDbContext.Insert<YFBatchRecord>(b))
+                {
+                    model.info.status = 1;
+                    model.info.message = "操作成功";
+                    model.body = new BatchRM(b);
+                }
+                else
+                {
+                    model.info.status = 0;
+                    model.info.message = "入栏操作失败";
+                }                
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+
+        public bool CheckBatch(ApiModel model,int projectid,int batchid)
+        {
+            var batch = AppDbContext.Where<YFBatchRecord>(m => m.ProjectID_int == projectid && m.BatchID_int == batchid && m.SlaughterFlag_bit == false).FirstOrDefault();
+
+            if (batch == null)
+            {
+                model.info.status = 0;
+                model.info.message = "操作失败，未找到指定批次或此批次已出栏";
+                return false;
+            }
+            return true;
+
+        }
+
+        [Route("addKicken")]
+        [HttpPost]
+        public IHttpActionResult addKicken(ChickenAddBM chickenAddBM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApiModel model = new ApiModel();
+            try
+            {
+                var batch = AppDbContext.Where<YFBatchRecord>(m => m.ProjectID_int == chickenAddBM.projectid && m.BatchID_int == chickenAddBM.batchid && m.SlaughterFlag_bit == false).FirstOrDefault();
+
+                if (batch == null)
+                {
+                    model.info.status = 0;
+                    model.info.message = "操作失败，未找到指定批次或此批次已出栏";
+                    return Ok(model);
+                }              
+
+                YFBatchRecordAddChicken b = chickenAddBM.Create();
+
+                if (AppDbContext.Insert<YFBatchRecordAddChicken>(b))
+                {
+                    model.info.status = 1;
+                    model.info.message = "操作成功";
+                }
+                else
+                {
+                    model.info.status = 0;
+                    model.info.message = "入栏操作失败";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+        private async Task<EZResponse<EZServerTime>> EZGetServerTime()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Helper.EZBASEURL);
+                HttpResponseMessage response = await client.PostAsync(Helper.EZGETSERVERTIMEMETHOD + "?id=123456&appKey=" + Helper.EZAPPKEY, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<EZResponse<EZServerTime>>();
+                }
+                return null;
+            }
+        }
+        [Route("getBatchRecordWorkReport")]
+        [HttpPost]
+        public IHttpActionResult getBatchRecordWorkReport(int userid, int projectid, int batchid)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            ApiModel model = new ApiModel();
+
+            try
+            {
+                var batch = AppDbContext.Where<YFBatchRecord>(m => m.ProjectID_int == projectid && m.BatchID_int == batchid && m.SlaughterFlag_bit == false).FirstOrDefault();
+
+                if (batch == null)
+                {
+                    model.info.status = 0;
+                    model.info.message = "操作失败，未找到指定批次或此批次已出栏";
+                    return Ok(model);
+                }
+
+                var chickenAddInfo = TheRepository.GetLastAddChickenInfo(projectid, batchid);
+                var dayReport = TheRepository.GetLastDayReport(projectid, batchid);
+
+                DayReportRM dayReportRM = new DayReportRM();
+                if (dayReport.DTCreate_datetime.ToShortDateString() == DateTime.Now.ToShortDateString())
+                    dayReportRM = new DayReportRM(dayReport);
+                
+                dayReportRM.LairageDate = batch.Lairage_datatime.Value.ToString("yyyy-MM-dd");
+                dayReportRM.ChickenTypeID = batch.ChickenTypeID_int;
+                dayReportRM.Age = (DateTime.Now - batch.Lairage_datatime.Value).Days;
+                dayReportRM.TotalChickenAmount = batch.LairageAmount_int ?? 0 + chickenAddInfo.ChickenAmount_int ?? 0 + chickenAddInfo.TotalChickenAmount_int ?? 0;
+
+
+                    //从实时数据读取重量和用料量 
+                    IOSoaService service = new IOSoaService();
+                    var result = service.GetIos(userid, projectid, new string[] { "AverageWeight", "MaterialWeight" });
+
+                    var weight = ((Dictionary<string, string>)result.body)["AverageWeight"];
+                    var fodder = ((Dictionary<string, string>)result.body)["MaterialWeight"];
+                dayReportRM.Weight = double.Parse(string.IsNullOrEmpty(weight) ? "0" : weight);
+                dayReportRM.FodderCumulant = double.Parse(string.IsNullOrEmpty(fodder) ? "0" : fodder);
+
+                model.info.status = 1;
+                model.info.message = "查询成功";
+                model.body = dayReportRM;
+
+            }
+            catch (Exception ex)
+            {
+                model.info.status = 0;
+                model.info.message = ex.Message;
+            }
+
+            return Ok(model);
+        }
+
+
+    }
+    
+}

@@ -11,32 +11,35 @@ namespace Chicken.signalR
     [HubName("DataTickerHub")]
     public class DataTickerHub : Hub
     {
+        private string name = "system";
         private RedisDataTicker redisDataTicker;
 
-        public DataTickerHub() : this(RedisDataTicker.Instance) { }
+        public DataTickerHub(): this(RedisDataTicker.Instance) { }
 
         public DataTickerHub(RedisDataTicker redisDataTicker)
         {
-            redisDataTicker = redisDataTicker;
+            
+            this.redisDataTicker = redisDataTicker;
+
         }
 
         public void GetAllData()
         {
-            string username = Context.User.Identity.Name;
+            //string username = Context.User.Identity.Name;
             string project = "26";
 
             redisDataTicker.GetAllData(Context.ConnectionId, project);
         }
         public void SendCommand(string data)
         {
-            string name = Context.User.Identity.Name;
+            //string name = Context.User.Identity.Name;
             redisDataTicker.SendCommandToQueue(name, data);
         }
 
         public override Task OnConnected()
         {
-            string name = Context.User.Identity.Name;
-
+            //var name = Context.User.Identity;
+            redisDataTicker.signalRHubClients = this.Clients;
             string project = "26";
 
             redisDataTicker.ProjectUserConnections.AddOrUpdate(
@@ -59,7 +62,7 @@ namespace Chicken.signalR
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            string name = Context.User.Identity.Name;
+            //string name = Context.User.Identity.Name;
             string project = "26";
 
             redisDataTicker.ProjectUserConnections[project].RemoveWhere(m => m.Username == name);
@@ -69,7 +72,7 @@ namespace Chicken.signalR
 
         public override Task OnReconnected()
         {
-            string name = Context.User.Identity.Name;
+            //string name = Context.User.Identity.Name;
             string project = "26";
 
             redisDataTicker.ProjectUserConnections.AddOrUpdate(

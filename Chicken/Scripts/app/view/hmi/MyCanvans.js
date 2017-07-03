@@ -41,7 +41,7 @@ Ext.define('MyApp2.view.hmi.MyCanvans', {
     xtype: 'toolbar',
     items: [{
         xtype: 'button',
-        html: 'editor',
+        html: 'binding',
         handler: 'onScript'
 
       },

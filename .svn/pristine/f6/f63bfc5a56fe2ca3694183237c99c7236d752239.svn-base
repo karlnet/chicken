@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.YFModels
+{
+    public class IOValues
+    {
+        public double AverageWeight { get; set; }
+        public double MaterialWeight { get; set; }
+        public double ElectricQuantity { get; set; }
+        public double WaterYield { get; set; }
+
+        public IOValues(double averageWeight,double materialWeight,double electricQuantity, double waterYield)
+        {
+            AverageWeight = averageWeight;
+            MaterialWeight = materialWeight;
+            ElectricQuantity = electricQuantity;
+            WaterYield = waterYield;
+        }
+    }
+}

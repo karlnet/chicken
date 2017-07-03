@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.Models
+{
+    public class BatchEndBM
+    {
+        [Required]
+        public int userid { get; set; }
+        [Required]
+        public int projectid { get; set; }
+         [Required]
+        public int batchid { get; set; }
+        public string slaughterDate { get; set; }      
+        public double? slaughterPrice { set; get; }
+        public string remarks { get; set; }
+
+    }
+}

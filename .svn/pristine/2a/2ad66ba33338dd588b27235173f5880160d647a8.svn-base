@@ -1,0 +1,118 @@
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
+using StackExchange.Redis;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Newtonsoft.Json;
+using Microsoft.ServiceBus.Messaging;
+using Newtonsoft.Json.Linq;
+using Microsoft.AspNet.SignalR.Messaging;
+using System.Configuration;
+using Chicken.Tools;
+
+namespace Chicken.signalR
+{
+
+    public class MyUser
+    {
+        public string Username { get; set; }
+        public string connection { get; set; }
+    }
+
+    public class RedisDataTicker
+    {
+
+        public  ConcurrentDictionary<string, HashSet<MyUser>> ProjectUserConnections = new ConcurrentDictionary<string, HashSet<MyUser>>();
+
+        // signalR hub ' Singleton instance
+        private readonly static Lazy<RedisDataTicker> _instance = new Lazy<RedisDataTicker>(() => new RedisDataTicker(GlobalHost.ConnectionManager.GetHubContext<DataTickerHub>().Clients));
+
+        private IHubConnectionContext<dynamic> signalRHubClients { get; set; }
+
+        // redis client
+        private StackExchange.Redis.ISubscriber subscriber = AppData.RedisConnection.GetSubscriber();
+        private IDatabase   redisCache = AppData.RedisConnection.GetDatabase();
+        private const string SingleRChannel = "signalRChannel";
+
+        // service bus queue client
+        private const string queueConnectionString
+            = "Endpoint=sb://hhnext.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9HTDDNPcUjr4fNYRf1//VWRVh/k0a4b/tifTCEvwZjw=";
+        private const string queueName = "hhnext-queue";
+        private QueueClient queueClient;
+
+        public static RedisDataTicker Instance
+        {
+            get
+            {
+                return _instance.Value;
+            }
+        }
+        private RedisDataTicker(IHubConnectionContext<dynamic> clients)
+        {
+            signalRHubClients = clients;
+
+            queueClient = QueueClient.CreateFromConnectionString(queueConnectionString, queueName);
+
+        }
+
+
+
+        public void RegisterRedisChannel(string project)
+        {
+            subscriber.Subscribe(SingleRChannel, (channel, message) =>
+                       {
+                           var Users = ProjectUserConnections[project];
+                           foreach (var user in Users)
+                           {
+                               signalRHubClients.Client(user.connection).updateNewData((string)message);    //updateNewData  is browser js method
+                           }
+                       });
+        }
+
+        private string GetAllDataFromRedis(string project)
+        {
+            var projectId = redisCache.HashGet("User:Project", "zhangxb");
+            var projectDevices = redisCache.ListRange(projectId + ":Devices");
+            IEnumerable<string> data = projectDevices
+                            .Select(item =>
+                          {
+                              string deviceId = item.ToString();
+                              var deviceData = redisCache.HashGetAll(deviceId).ToStringDictionary();
+                              deviceData.Add("DeviceId", deviceId);
+                              var newDeviceData = JsonConvert.SerializeObject(deviceData);
+                              return newDeviceData;
+                          });
+
+            return JsonConvert.SerializeObject(data);
+        }
+
+        public void SendCommandToQueue(string name,string data)
+        {
+            JObject bodyAsJson = JObject.Parse(data);
+            bodyAsJson.AddFirst(new JProperty("UserName", "orinoco"));   // test user orinoco
+            var message = new BrokeredMessage(JsonConvert.SerializeObject(bodyAsJson));
+            queueClient.Send(message);
+
+        }
+
+        public void GetAllData(string connectionId, string project)   // GetAllData  is  method for brower call throught  hub
+        {
+            string projectData = GetAllDataFromRedis(project);
+
+            signalRHubClients.Client(connectionId).updateNewData(projectData);
+
+        }
+
+        //private void BroadcastNewData(string project,string newData)
+        //{
+        //    var Users = ProjectUserConnections[project];
+        //    foreach (var user in Users)
+        //    {
+        //        signalRHubClients.Client(user.connection).updateNewData(newData); //updateNewData  is browser js method
+        //    }
+        //}
+    }
+}
