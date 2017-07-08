@@ -34,7 +34,7 @@ Ext.define('MyApp2.view.hmi.MyCanvans', {
       name: 'textarea1',
       fieldLabel: 'TextArea',
       reference: 'textarea1',
-      value: "function() {  if ($2%2===0) return 'blue';else return 'red' ; }"
+      value: "function() {  if ($2 < 60) return 'blue';else return 'red' ; }"
 
     }]
   }, {

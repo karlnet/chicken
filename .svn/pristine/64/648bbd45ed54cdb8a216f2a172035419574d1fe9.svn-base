@@ -1,0 +1,31 @@
+﻿using StackExchange.Redis;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Configuration;
+using Microsoft.ServiceBus.Messaging;
+
+namespace MessageProcessRedis
+{
+    class Helper
+    {
+        
+        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+        {
+            return ConnectionMultiplexer.Connect(ConfigurationManager.AppSettings["RedisCacheName"] + ",abortConnect=false,ssl=true,password=" + ConfigurationManager.AppSettings["RedisCachePassword"]);
+        });
+
+        public static ConnectionMultiplexer RedisConnection
+        {
+            get
+            {
+                return lazyConnection.Value;
+            }
+        }
+
+        public static SubscriptionClient subscriptionClient = SubscriptionClient.CreateFromConnectionString(ConfigurationManager.AppSettings["ServiceBusconnectionString"], "hhnext-topic", "hhnext-subscribe-redis");
+
+    }
+}

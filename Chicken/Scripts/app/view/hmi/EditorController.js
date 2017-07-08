@@ -603,13 +603,13 @@ Ext.define('MyApp2.view.hmi.EditorController', {
           fontSize: 40,
           fontStyle: 'italic',
           fontWeight: 'normal',
-          fill: '#FFFF00',
-          backgroundColor: '#006600',
-          textBackgroundColor: '#006600',
+          fill: '#00FF00',
+          // backgroundColor: '#006600',
+          // textBackgroundColor: '#006600',
           textAlign: 'left',
           // textDecoration: 'underline',
-          shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
-          stroke: '#FFFF00',
+          // shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+          // stroke: '#00FF00',
           strokeWidth: 2
         });
         this.addNewObject(text);
@@ -2305,15 +2305,20 @@ Ext.define('MyApp2.view.hmi.EditorController', {
 
   onScript: function() {
     var text1 = this.lookupReference('textfield1').value;
-    // var color1 = this.lookupReference('textarea1').value;
+    var text2 = this.lookupReference('textarea1').value;
 
     theCanvas.item(0).shapeScript = {
       'myValue': text1
     };
-    // theCanvas.item(1).shapeScript = {
-    //   'fill': color1
-    // };
 
+    theCanvas.item(1).shapeScript = {
+      'text': text1,
+      'fill': text2
+    };
+
+    theCanvas.item(2).shapeScript = {
+        'myValue': text1
+    };
     // theCanvas.item(2).shapeScript={'width':10};
 
     // console.log(text1, color1);

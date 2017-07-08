@@ -1,0 +1,91 @@
+﻿using Microsoft.ServiceBus.Messaging;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using StackExchange.Redis;
+using Newtonsoft.Json;
+
+namespace MessageProcessRedis
+{
+    class Program
+    {
+        private const string SingleRChannel= "signalRChannel";
+        static void Main(string[] args)
+        {
+            IDatabase redisCache = Helper.RedisConnection.GetDatabase();
+            ISubscriber redisSub = Helper.RedisConnection.GetSubscriber();
+
+            SubscriptionClient subscriptionClient = Helper.subscriptionClient;
+
+            OnMessageOptions options = new OnMessageOptions();
+            options.AutoComplete = false;
+            options.AutoRenewTimeout = TimeSpan.FromMinutes(1);
+
+            subscriptionClient.OnMessage((message) =>
+            {
+                try
+                {
+                    var bodyStream = message.GetBody<Stream>();
+                    bodyStream.Position = 0;
+                    var bodyAsString = new StreamReader(bodyStream, Encoding.ASCII).ReadToEnd();
+
+                    JObject bodyAsJson = JObject.Parse(bodyAsString);
+
+                    Console.WriteLine("MessageId: {0} ", message.MessageId);
+                    Console.WriteLine("message: {0} ", bodyAsString);
+
+                    //string projectName = (string)bodyAsJson["ProjectName"];
+                    string deviceId = (string)bodyAsJson["deviceId"];
+                    JObject data = (JObject)bodyAsJson["data"];
+
+                    List<HashEntry> hesDevice = new List<HashEntry>();
+                    List<HashEntry> hesProject = new List<HashEntry>();
+                    //StringBuilder sb = new StringBuilder();
+                    string deviceIndex;
+                    foreach (JProperty property in data.Properties())
+                    {
+                        //sb.Append(","+property.Name + ":" + property.Value.ToString());
+                        //hes.Add(new  HashEntry(deviceId+":"+property.Name, property.Value.ToString()));
+                        hesDevice.Add(new HashEntry(property.Name, property.Value.ToString()));
+                        deviceIndex = redisCache.HashGet("device:" + deviceId + ":Id", property.Name);
+                        hesProject.Add(new HashEntry(deviceIndex,property.Value.ToString()));
+
+                    }
+
+                    redisCache.HashSet("device:"+ deviceId+":values", hesDevice.ToArray());
+                    string projectId = redisCache.StringGet("device:" + deviceId + ":project");
+                    redisCache.HashSet("project:" + projectId + ":values", hesProject.ToArray());
+
+                    //dynamic newData = new JObject();
+                    //newData.DeviceId = deviceId;
+                    //newData.Data = data;
+
+                    //Console.WriteLine("signal message : {0} ", newData.ToString());
+
+                    string messageBodyAsString = JsonConvert.SerializeObject(hesProject);
+                    Console.WriteLine("signal message : {0} ", messageBodyAsString);
+
+                    //redisSub.Publish(SingleRChannel, messageBodyAsString);
+
+                    message.Complete();
+
+                }
+                catch (Exception e)
+                {
+                    message.Abandon();
+                }
+            }, options);
+
+            Console.WriteLine("Redis Receiving interactive messages from SB queue...");
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadLine();
+        }
+
+
+    }
+}
