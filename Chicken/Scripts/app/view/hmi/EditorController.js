@@ -2477,6 +2477,7 @@ Ext.define('MyApp2.view.hmi.EditorController', {
 
     dataHub.client.updateNewData = function(data) {
       //
+       console.log(data);
       var projectData = JSON.parse(data);
       console.log(projectData);
       me.setCanvasData(projectData);

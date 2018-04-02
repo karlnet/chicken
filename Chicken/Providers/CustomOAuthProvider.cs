@@ -1,4 +1,5 @@
 ﻿using Chicken.Data.Entities;
+using Chicken.Infrastructure;
 using Chicken.Tools;
 using Chicken.YFModels;
 using Microsoft.AspNet.Identity.Owin;
@@ -65,6 +66,9 @@ namespace Chicken.Providers
                 return;
 
             var identity = new ClaimsIdentity("JWT");
+
+            //oAuthIdentity.AddClaims(ExtendedClaimsProvider.GetClaims(user));
+            //oAuthIdentity.AddClaims(RolesFromClaims.CreateRolesBasedOnClaims(oAuthIdentity));
 
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             //identity.AddClaim(new Claim("sub", context.UserName));

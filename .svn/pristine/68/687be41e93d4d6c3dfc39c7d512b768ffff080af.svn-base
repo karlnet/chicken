@@ -1,0 +1,98 @@
+﻿using Chicken.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Chicken.DTOs
+{
+    public class BatchRM
+    {
+        public BatchRM(YFBatchRecord batch)
+        {
+            projectId = batch.ProjectID_int;
+            chickenTypeID = batch.ChickenTypeID_int;
+            batchID = batch.BatchID_int;
+            //lairageDate = batch.Lairage_datatime.Value.ToString("yyyy-MM-dd");
+            lairageDate = batch.Lairage_datatime == null ? null : batch.Lairage_datatime.Value.ToString("yyyy-MM-dd");
+            slaughterDate = batch.Slaughter_datetime == null ? null : batch.Slaughter_datetime.Value.ToString("yyyy-MM-dd");
+            slaughterFlag = batch.SlaughterFlag_bit;
+            lairageAmount = batch.LairageAmount_int;
+            remarks = batch.Remarks_nvarchar;
+            lairageWeight = batch.LairageWeight_float;
+
+            lairageChickenId = batch.LariageChickenID_int;
+            lairageChickenPrice = batch.LairageChickenPrice_float;
+            
+
+            lairageFodderId = batch.LariageFodderID_int;
+            lairageFodderPrice = batch.LairageFodderPrice_float;
+            lairageFodderDatetime = batch.LairageFodderPrice_datetime == null ? null : batch.LairageFodderPrice_datetime.Value.ToString("yyyy-MM-dd");
+
+            lairageFodderId2 = batch.LariageFodderID2_int;
+            lairageFodderPrice2 = batch.LairageFodderPrice2_float;
+            lairageFodderDatetime2 = batch.LairageFodderPrice2_datetime == null ? null : batch.LairageFodderPrice2_datetime.Value.ToString("yyyy-MM-dd");
+
+            lairageFodderId3 = batch.LariageFodderID2_int;
+            lairageFodderPrice3 = batch.LairageFodderPrice2_float;
+            lairageFodderDatetime3 = batch.LairageFodderPrice3_datetime == null ? null : batch.LairageFodderPrice3_datetime.Value.ToString("yyyy-MM-dd");
+
+            lairageFodderId4 = batch.LariageFodderID2_int;
+            lairageFodderPrice4 = batch.LairageFodderPrice2_float;
+            lairageFodderDatetime4 = batch.LairageFodderPrice4_datetime == null ? null : batch.LairageFodderPrice4_datetime.Value.ToString("yyyy-MM-dd");
+
+            liveChickenAmount = batch.LiveChickenAmount_int == null ? 0 : batch.LiveChickenAmount_int.Value;
+            addChickenAmount = batch.TotalAddChickenAmount_int == null ? 0 : batch.TotalAddChickenAmount_int.Value;
+            slaughtChickenAmount = batch.SlaughterAmount_int == null ? 0 : batch.SlaughterAmount_int.Value;
+
+            slaughtPrice = batch.SlaughtPrice_float ?? 0;
+            contractPrice = batch.SlaughtPrice_float ?? 0;
+
+        }
+
+        public int projectId { get; set; }
+        public int batchID { get; set; }        
+        public string lairageDate { get; set; }
+        public int? lairageAmount { get; set; }
+        public int chickenTypeID { get; set; }
+        public int? lairageChickenId { get; set; }
+        public double? lairageChickenPrice { get; set; }
+        public string remarks { get; set; }
+        public double? lairageWeight { get; set; }
+        public bool slaughterFlag { get; set; }
+        public string slaughterDate { get; set; }
+
+        public int? lairageFodderId { get; set; }
+
+        public double? lairageFodderPrice { get; set; }
+        public string lairageFodderDatetime { get; set; }
+
+        public int? lairageFodderId2 { get; set; }
+
+        public double? lairageFodderPrice2 { get; set; }
+
+        public string lairageFodderDatetime2 { get; set; }
+
+        public int? lairageFodderId3 { get; set; }
+
+        public double? lairageFodderPrice3 { get; set; }
+
+        public string lairageFodderDatetime3 { get; set; }
+
+        public int? lairageFodderId4 { get; set; }
+
+        public double? lairageFodderPrice4 { get; set; }
+
+        public string lairageFodderDatetime4 { get; set; }
+
+
+        public int liveChickenAmount { get; set; } = 50;
+
+        public int addChickenAmount { get; set; } = 50;
+        public int slaughtChickenAmount { get; set; } = 50;
+
+        public double? slaughtPrice  { get; set; }
+        public double? contractPrice { get; set; }
+
+    }
+}

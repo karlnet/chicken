@@ -17,6 +17,11 @@ namespace MessageProcessRedis
         private const string SingleRChannel = "signalRChannel";
         static void Main(string[] args)
         {
+            /*
+            hmset device:10010001:Id  temp1 "1" temp2 "2"  temp3 "3"  Rh  "4"  weight "5"  fan  "6" pressure  "7"  power  "8"
+            set device:10010001:project "P0001"
+            {"data":{"temp1":20,"temp2":30,"temp3":32,"Rh":60,"weight":1.3,"fan":1,"pressure":0.0,"power":60},"timestamp":"2017/8/19 9:27:57","deviceId":"10010001"}
+            */
             IDatabase redisCache = Helper.RedisConnection.GetDatabase();
             ISubscriber redisSub = Helper.RedisConnection.GetSubscriber();
 

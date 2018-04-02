@@ -1,5 +1,6 @@
 ﻿using Chicken.Data.Entities;
 using Chicken.DTOs;
+using Chicken.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,8 +50,12 @@ namespace Chicken.Data
         public IQueryable<YFProject> GetUserProjects(List<int> projectids)
         {
             var projects = db.Where<YFProject>( m=> projectids.Contains(m.ProjectID_int));
-
             return projects;
+        }
+        public IQueryable<YFChickenHouseInfo> GetUserHouses(List<int> projectids)
+        {
+            var houses = db.Where<YFChickenHouseInfo>(m => projectids.Contains(m.ID));
+            return houses;
         }
     }
 }

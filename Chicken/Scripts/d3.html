@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 
-<script src="./scripts/d3.js" charset="utf-8"></script>
-<script>
-var body=d3.select("body");
+    <script src="./scripts/d3.js" charset="utf-8"></script>
+    <script>
+        var body = d3.select("body");
 
-body.append("h1")
-    .text("hello world");
-body.append("p")
-    .text("by zhangxian");
+        var svg = body.append("svg")
+            .attr("width", 40)
+            .attr("height", 400);
 
 
-</script>
+
+
+        svg.append("circle")
+            .attr('cx', 100)
+
+        // body.append("h1")
+        //     .text("hello world");
+        // body.append("p")
+        //     .text("by zhangxian");
+    </script>
 </body>
+
 </html>

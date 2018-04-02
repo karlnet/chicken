@@ -11,10 +11,15 @@ namespace Chicken.Tools
 {
     public class AppData
     {
+
         public const string ChickenURL = "http://api.yfiot.com/chicken2/";
         //public const string ChickenURL = "http://192.168.1.6:11111/";
 
+
+        public const string PlatformId = "F0F03BF1-D71D-4481-A4F7-8886E76DCD01";
+       
         public const string YFIOURI = "http://api.yfiot.com/io/getIoValues";
+        public const string YFIOwURI = "http://api.yfiot.com/io/writeIoValues";
 
         public const string ChickenOauth2URL = ChickenURL + "oauth2/token";
         public const string ChickenAppId = "B2A40576-03FE-408B-9C05-9E2A8CEA1381";
@@ -27,7 +32,7 @@ namespace Chicken.Tools
         public const string SMSAccountId = "aaf98f8952a572be0152a64ce78c01ec";
         public const string SMSToken = "c008b9fd349744d08f94cec4d3966884";
         public const string SMSAppId = "aaf98f8952a572be0152a6505b7e0201";
-        public const string SMSChickenTemplateId = "182704";
+        public const string SMSChickenTemplateId = "66950";
         //public const string SMSChickenTemplateId = "66950";
         
         public static ConcurrentDictionary<int, UserInfo> UserList = new ConcurrentDictionary<int, UserInfo>();

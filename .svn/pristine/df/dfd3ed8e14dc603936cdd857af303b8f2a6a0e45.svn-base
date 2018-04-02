@@ -1,0 +1,70 @@
+namespace Chicken.Infrastructure
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("point")]
+    public partial class point
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public point()
+        {
+            role_point = new HashSet<role_point>();
+        }
+
+        public string pointId { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string deviceId { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string projectId { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string pointNo { get; set; }
+
+        [Required]
+        [StringLength(256)]
+        public string name { get; set; }
+
+        [StringLength(256)]
+        public string alias { get; set; }
+
+        [StringLength(256)]
+        public string projectNo { get; set; }
+
+        [StringLength(256)]
+        public string data_type { get; set; }
+
+        public bool? enable { get; set; }
+
+        public double? uplimit { get; set; }
+
+        public double? lowlimit { get; set; }
+
+        public double? max_value { get; set; }
+
+        public double? min_value { get; set; }
+
+        public double? default_value { get; set; }
+
+        [StringLength(256)]
+        public string express { get; set; }
+
+        [StringLength(1024)]
+        public string comment { get; set; }
+
+        public virtual device device { get; set; }
+
+        public virtual project project { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<role_point> role_point { get; set; }
+    }
+}

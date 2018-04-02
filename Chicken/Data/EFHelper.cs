@@ -1,4 +1,5 @@
 ﻿using Chicken.Data.Entities;
+using Chicken.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
