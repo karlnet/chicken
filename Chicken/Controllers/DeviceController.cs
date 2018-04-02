@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace Chicken.Controllers
 {
-    [RoutePrefix("Device")]
+    [RoutePrefix("scripts/device")]
     public class DeviceController : BaseApiController
     {
         
@@ -20,12 +20,12 @@ namespace Chicken.Controllers
 
         [HttpGet]
         [Route("")]
-        public ApiModel Get()
+        public ApiModel Get(string projectNo)
         {
             ApiModel model = new ApiModel();
             try
             {
-                var devices = AppDbContext.devices;
+                var devices = AppDbContext.devices.Where(m => m.projectId == projectNo);
                 if (devices == null)
                 {
                     model.status = 0;

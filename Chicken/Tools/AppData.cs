@@ -17,7 +17,7 @@ namespace Chicken.Tools
 
 
         public const string PlatformId = "F0F03BF1-D71D-4481-A4F7-8886E76DCD01";
-       
+
         public const string YFIOURI = "http://api.yfiot.com/io/getIoValues";
         public const string YFIOwURI = "http://api.yfiot.com/io/writeIoValues";
 
@@ -34,7 +34,7 @@ namespace Chicken.Tools
         public const string SMSAppId = "aaf98f8952a572be0152a6505b7e0201";
         public const string SMSChickenTemplateId = "66950";
         //public const string SMSChickenTemplateId = "66950";
-        
+
         public static ConcurrentDictionary<int, UserInfo> UserList = new ConcurrentDictionary<int, UserInfo>();
 
         private static Lazy<ConnectionMultiplexer> lazyRedisConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -51,6 +51,16 @@ namespace Chicken.Tools
             }
         }
 
+        public static Dictionary<int, MenuItem> GetDefaultMenuItem()
+        {
+            return new Dictionary<int, MenuItem>
+            {
+                    {10, new MenuItem(100,"数据管理",true,true,"x-fa fa-database","app-dataList")   },
+                    {20, new MenuItem(200,"设备管理",true,true,"x-fa fa-server","app-deviceList")     },
+                    {30, new MenuItem(300,"用户管理",true,true,"x-fa fa-user","app-userList")     },
+                    {40, new MenuItem(400,"界面管理",true,true,"x-fa fa-television","app-UIList")       },
+            };
+        }
 
 
     }

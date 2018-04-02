@@ -16,7 +16,7 @@ Ext.define('MyApp2.view.main.List', {
     },
 
     columns: [
-        { text: 'Name',  dataIndex: 'name' },
+        { text: 'Name', dataIndex: 'name' },
         { text: 'Email', dataIndex: 'email', flex: 1 },
         { text: 'Phone', dataIndex: 'phone', flex: 1 }
     ],

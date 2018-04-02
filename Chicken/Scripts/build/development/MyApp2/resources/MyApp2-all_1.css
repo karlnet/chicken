@@ -1,3 +1,28 @@
+/* C:/hhnext/chicken/Chicken/Chicken/Scripts/sass/etc/all.scss:33 */
+*:focus {
+    outline: 0 !important;
+}
+/* C:/hhnext/chicken/Chicken/Chicken/Scripts/sass/etc/all.scss:37 */
+.x-menu-header {
+    z-index: 0 !important;
+}
+/* C:/hhnext/chicken/Chicken/Chicken/Scripts/sass/etc/all.scss:41 */
+.x-css-shadow {
+    box-shadow: none !important;
+}
+/* C:/hhnext/chicken/Chicken/Chicken/Scripts/sass/etc/all.scss:45 */
+.x-fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+}
+/* C:/hhnext/chicken/Chicken/Chicken/Scripts/sass/etc/all.scss:50 */
+.alignRight {
+    float: right;
+}
+/* C:/hhnext/chicken/Chicken/Chicken/Scripts/sass/etc/all.scss:54 */
+.boldFont {
+    font-weight: bold;
+}
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/packages/core/sass/src/util/SizeMonitor.scss:5 */
 .x-size-monitored {
     /**
@@ -664,7 +689,6 @@ td.x-frame-br {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
-    -o-border-radius: 5px;
     border-radius: 5px;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-base/sass/src/Component.scss:200 */
@@ -821,7 +845,6 @@ td.x-frame-br {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     display: block;
     background: repeat-x 0 0;
@@ -3072,7 +3095,7 @@ the height of a multi-line element */
     color: #404040;
     font-size: 13px;
     line-height: 17px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background: #f6f6f6;
 }
@@ -3088,7 +3111,7 @@ the height of a multi-line element */
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/form/Labelable.scss:97 */
 .x-form-item-label-default {
     color: #404040;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     min-height: 32px;
     padding-top: 8px;
     padding-right: 5px;
@@ -3130,7 +3153,7 @@ the height of a multi-line element */
 .x-form-invalid-under-default {
     padding: 2px 2px 2px 20px;
     color: #cf4c35;
-    font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background: no-repeat 0 2px;
     background-image: url(images/form/exclamation.png);
 }
@@ -3174,7 +3197,7 @@ the height of a multi-line element */
     color: #404040;
     padding: 5px 10px 4px;
     background-color: #fff;
-    font: 300 13px/21px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/21px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     min-height: 30px;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/form/field/Text.scss:272 */
@@ -3300,7 +3323,7 @@ body > .x-mask {
     padding: 0;
     background-color: transparent;
     color: #404040;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/LoadMask.scss:59 */
 .x-mask-msg-text {
@@ -3544,7 +3567,7 @@ body > .x-mask {
 .x-toolbar-text-default {
     padding: 0 4px;
     color: #4b4c4c;
-    font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:334 */
 .x-toolbar-spacer-default {
@@ -3736,7 +3759,7 @@ body > .x-mask {
 .x-toolbar-text-footer {
     padding: 0 4px;
     color: #4b4c4c;
-    font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/toolbar/Toolbar.scss:334 */
 .x-toolbar-spacer-footer {
@@ -4433,7 +4456,7 @@ body > .x-mask {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/dd/StatusProxy.scss:1 */
 .x-dd-drag-proxy {
     color: #404040;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     border: 1px solid #d0d0d0;
     background-color: #fff;
 }
@@ -4560,7 +4583,7 @@ body > .x-mask {
 .x-panel-header-title-default {
     color: #f0f0f0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 20px;
 }
@@ -4617,7 +4640,7 @@ body > .x-mask {
     border-color: #d0d0d0;
     color: #404040;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     border-width: 1px;
     border-style: solid;
@@ -4921,7 +4944,7 @@ body > .x-mask {
 .x-panel-header-title-default-framed {
     color: #f0f0f0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 20px;
 }
@@ -4978,7 +5001,7 @@ body > .x-mask {
     border-color: #d0d0d0;
     color: #404040;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     border-width: 1px;
     border-style: solid;
@@ -5013,7 +5036,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5131,7 +5153,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5254,7 +5275,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5381,7 +5401,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5504,7 +5523,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5631,7 +5649,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5754,7 +5771,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -5881,7 +5897,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -6004,7 +6019,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -6310,7 +6324,6 @@ body > .x-mask {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -6328,7 +6341,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -6457,7 +6469,7 @@ body > .x-mask {
     padding: 6px 8px;
     color: #f0f0f0;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/var/tip/Tip.scss:374 */
 .x-tip-body-default a {
@@ -6498,7 +6510,6 @@ body > .x-mask {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -6516,7 +6527,6 @@ body > .x-mask {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -6645,7 +6655,7 @@ body > .x-mask {
     padding: 3px 3px 3px 22px;
     color: #f0f0f0;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/var/tip/Tip.scss:374 */
 .x-tip-body-form-invalid a {
@@ -6736,7 +6746,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 7px 7px 7px 7px;
     border-width: 1px;
@@ -6754,7 +6763,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -6857,7 +6865,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-small {
-    font: 400 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 5px;
     max-width: 100%;
@@ -7000,6 +7008,7 @@ a.x-color-picker-item:hover {
     background-color: #5fa2dd;
     -webkit-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
     -moz-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
+    -ms-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
     box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
@@ -7030,6 +7039,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-over.x-btn-default-small {
     -webkit-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
     -moz-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
+    -ms-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
     box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
@@ -7044,6 +7054,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-pressed.x-btn-default-small {
     -webkit-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
     -moz-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
+    -ms-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
     box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
@@ -7331,7 +7342,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 8px 8px 8px 8px;
     border-width: 1px;
@@ -7349,7 +7359,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -7452,7 +7461,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-medium {
-    font: 400 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 8px;
     max-width: 100%;
@@ -7595,6 +7604,7 @@ a.x-color-picker-item:hover {
     background-color: #5fa2dd;
     -webkit-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
     -moz-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
+    -ms-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
     box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
@@ -7625,6 +7635,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-over.x-btn-default-medium {
     -webkit-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
     -moz-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
+    -ms-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
     box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
@@ -7639,6 +7650,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-pressed.x-btn-default-medium {
     -webkit-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
     -moz-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
+    -ms-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
     box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
@@ -7926,7 +7938,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 9px 9px 9px 9px;
     border-width: 1px;
@@ -7944,7 +7955,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8047,7 +8057,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-large {
-    font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 10px;
     max-width: 100%;
@@ -8190,6 +8200,7 @@ a.x-color-picker-item:hover {
     background-color: #5fa2dd;
     -webkit-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
     -moz-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
+    -ms-box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
     box-shadow: #d3e0ec 0 1px 0px 0 inset, #d3e0ec 0 -1px 0px 0 inset, #d3e0ec -1px 0 0px 0 inset, #d3e0ec 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
@@ -8220,6 +8231,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-over.x-btn-default-large {
     -webkit-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
     -moz-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
+    -ms-box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
     box-shadow: #d1dee9 0 1px 0px 0 inset, #d1dee9 0 -1px 0px 0 inset, #d1dee9 -1px 0 0px 0 inset, #d1dee9 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
@@ -8234,6 +8246,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-pressed.x-btn-default-large {
     -webkit-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
     -moz-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
+    -ms-box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
     box-shadow: #ced8e1 0 1px 0px 0 inset, #ced8e1 0 -1px 0px 0 inset, #ced8e1 -1px 0 0px 0 inset, #ced8e1 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
@@ -8521,7 +8534,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 7px 7px 7px 7px;
     border-width: 1px;
@@ -8539,7 +8551,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -8642,7 +8653,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-toolbar-small {
-    font: 400 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #606060;
     padding: 0 5px;
     max-width: 100%;
@@ -8785,6 +8796,7 @@ a.x-color-picker-item:hover {
     background-color: #f6f6f6;
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
@@ -8815,6 +8827,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-over.x-btn-default-toolbar-small {
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
@@ -8829,6 +8842,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-pressed.x-btn-default-toolbar-small {
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
@@ -9116,7 +9130,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 8px 8px 8px 8px;
     border-width: 1px;
@@ -9134,7 +9147,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9237,7 +9249,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-toolbar-medium {
-    font: 400 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 14px/18px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #606060;
     padding: 0 8px;
     max-width: 100%;
@@ -9380,6 +9392,7 @@ a.x-color-picker-item:hover {
     background-color: #f6f6f6;
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
@@ -9410,6 +9423,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-over.x-btn-default-toolbar-medium {
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
@@ -9424,6 +9438,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-pressed.x-btn-default-toolbar-medium {
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
@@ -9711,7 +9726,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 9px 9px 9px 9px;
     border-width: 1px;
@@ -9729,7 +9743,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -9832,7 +9845,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-default-toolbar-large {
-    font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #606060;
     padding: 0 10px;
     max-width: 100%;
@@ -9975,6 +9988,7 @@ a.x-color-picker-item:hover {
     background-color: #f6f6f6;
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:762 */
@@ -10005,6 +10019,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-over.x-btn-default-toolbar-large {
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:840 */
@@ -10019,6 +10034,7 @@ a.x-color-picker-item:hover {
 .x-btn-focus.x-btn-pressed.x-btn-default-toolbar-large {
     -webkit-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     -moz-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
+    -ms-box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
     box-shadow: #5fa2dd 0 1px 0px 0 inset, #5fa2dd 0 -1px 0px 0 inset, #5fa2dd -1px 0 0px 0 inset, #5fa2dd 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:897 */
@@ -10471,7 +10487,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/form/field/HtmlEditor.scss:171 */
 .x-html-editor-wrap textarea {
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background-color: #fff;
     resize: none;
 }
@@ -10490,12 +10506,12 @@ a.x-color-picker-item:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/ProgressBar.scss:111 */
 .x-progress-default .x-progress-bar-default {
     background-image: none;
-    background-color: #7fb5e4;
+    background-color: #458fd2;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/ProgressBar.scss:126 */
 .x-progress-default .x-progress-text {
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 13px;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-align: center;
@@ -10541,6 +10557,7 @@ a.x-color-picker-item:hover {
     border-color: #d0d0d0;
     -webkit-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
     -moz-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
+    -ms-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
     box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:110 */
@@ -10562,7 +10579,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:132 */
 .x-btn-group-header-title-default {
-    font: 300 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 16px;
     color: #606060;
 }
@@ -10579,7 +10596,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -10597,7 +10613,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10690,7 +10705,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
-    -o-border-radius: 2px;
     border-radius: 2px;
     padding: 1px 1px 1px 1px;
     border-width: 1px;
@@ -10708,7 +10722,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -10801,6 +10814,7 @@ a.x-color-picker-item:hover {
     border-color: #d0d0d0;
     -webkit-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
     -moz-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
+    -ms-box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
     box-shadow: #fff 0 1px 0px 0 inset, #fff 0 -1px 0px 0 inset, #fff -1px 0 0px 0 inset, #fff 1px 0 0px 0 inset;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:110 */
@@ -10822,7 +10836,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/container/ButtonGroup.scss:132 */
 .x-btn-group-header-title-default-framed {
-    font: 300 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 14px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 16px;
     color: #606060;
 }
@@ -10874,7 +10888,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0 0 0 0;
     -moz-border-radius: 0 0 0 0;
     -ms-border-radius: 0 0 0 0;
-    -o-border-radius: 0 0 0 0;
     border-radius: 0 0 0 0;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-base/sass/etc/mixins/frame.scss:187 */
@@ -10907,7 +10920,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11003,7 +11015,7 @@ a.x-color-picker-item:hover {
     background: #fff;
     color: #000;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/window/Window.scss:264 */
@@ -11035,7 +11047,7 @@ a.x-color-picker-item:hover {
 .x-window-header-title-default {
     color: #f0f0f0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 20px;
 }
@@ -11116,7 +11128,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11234,7 +11245,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11361,7 +11371,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11479,7 +11488,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11606,7 +11614,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11724,7 +11731,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11851,7 +11857,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -11969,7 +11974,6 @@ a.x-color-picker-item:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -12378,7 +12382,7 @@ a.x-color-picker-item:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/var/form/field/Checkbox.scss:169 */
 .x-form-cb-label-default {
     margin-top: 8px;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #404040;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/var/form/field/Checkbox.scss:174 */
@@ -12435,7 +12439,7 @@ a.x-color-picker-item:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/form/FieldSet.scss:148 */
 .x-fieldset-header-default > .x-fieldset-header-text {
-    font: 400 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 16px/20px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #919191;
     padding: 1px 0;
 }
@@ -12605,7 +12609,7 @@ div.x-datepicker-arrow:hover {
 .x-datepicker-column-header {
     width: 44px;
     color: #404040;
-    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-align: right;
     background-color: #ececec;
 }
@@ -12622,7 +12626,7 @@ div.x-datepicker-arrow:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/picker/Date.scss:163 */
 .x-datepicker-date {
     padding: 0 15px 0 0;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #404040;
     cursor: pointer;
     line-height: 36px;
@@ -12641,7 +12645,7 @@ div.x-datepicker-date:hover {
 .x-datepicker-selected div.x-datepicker-date {
     background-color: #5fa2dd;
     color: #fff;
-    font-weight: 300;
+    font-weight: 400;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/picker/Date.scss:188 */
 .x-datepicker-today {
@@ -12707,7 +12711,7 @@ div.x-datepicker-date:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/picker/Date.scss:274 */
 .x-monthpicker-item {
     margin: 5px 0 5px;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-align: center;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/picker/Date.scss:280 */
@@ -12811,7 +12815,7 @@ a.x-monthpicker-yearnav-button:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/var/form/field/Display.scss:52 */
 .x-form-display-field-default {
     min-height: 32px;
-    font: 300 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/17px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #404040;
     margin-top: 8px;
 }
@@ -12861,7 +12865,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     background-color: #ececec;
     border: 1px solid #ececec;
@@ -12942,12 +12945,12 @@ a.x-monthpicker-yearnav-button:hover {
     padding: 10px;
     color: grey;
     background-color: #fff;
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/view/Table.scss:25 */
 .x-grid-item {
     color: #404040;
-    font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background-color: #fff;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/view/Table.scss:31 */
@@ -13178,7 +13181,7 @@ a.x-monthpicker-yearnav-button:hover {
 .x-column-header {
     border-right: 1px solid #d0d0d0;
     color: #404040;
-    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     outline: 0;
     background-color: #fff;
 }
@@ -13404,7 +13407,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 7px 7px 7px 7px;
     border-width: 1px;
@@ -13422,7 +13424,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -13525,7 +13526,7 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/button/Button.scss:464 */
 .x-btn-inner-grid-cell-small {
-    font: 400 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 12px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     color: #f0f0f0;
     padding: 0 5px;
     max-width: 100%;
@@ -13994,7 +13995,7 @@ a.x-monthpicker-yearnav-button:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/grid/feature/Grouping.scss:36 */
 .x-grid-group-title {
     color: #606060;
-    font: 400 13px/15px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 500 13px/15px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/etc/mixins/font-icon.scss:126 */
 .x-grid-group-hd-collapsed .x-grid-group-title:before {
@@ -14013,7 +14014,7 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/grid/feature/RowBody.scss:1 */
 .x-grid-rowbody {
-    font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     padding: 5px 10px 5px 10px;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/grid/feature/Summary.scss:1 */
@@ -14034,7 +14035,7 @@ a.x-monthpicker-yearnav-button:hover {
     border-color: #e9e9e9;
     background-color: #fff !important;
     border-top: 1px solid #e9e9e9;
-    font: 300 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px/19px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/grid/feature/Summary.scss:26 */
 .x-docked-summary .x-grid-item,
@@ -14132,7 +14133,7 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/menu/Menu.scss:417 */
 .x-menu-item-text-default {
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 31px;
     padding-top: 1px;
     color: #000;
@@ -14486,7 +14487,7 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/menu/Menu.scss:417 */
 .x-menu-item-text-default-menubar {
-    font: 300 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font: 400 13px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     line-height: 31px;
     padding-top: 1px;
     color: #000;
@@ -14996,7 +14997,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15114,7 +15114,6 @@ a.x-monthpicker-yearnav-button:hover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15291,8 +15290,8 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:6 */
 .x-accordion-hd .x-panel-header-title {
-    color: #404040;
-    font-weight: 300;
+    color: #333;
+    font-weight: 400;
     font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     text-transform: none;
 }
@@ -15302,7 +15301,7 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:16 */
 .x-accordion-item .x-accordion-hd {
-    background: #ececec;
+    background: #fff;
     border-width: 0;
     border-color: #5fa2dd;
     padding: 12px 10px;
@@ -15318,7 +15317,7 @@ a.x-monthpicker-yearnav-button:hover {
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:34 */
 .x-accordion-item .x-accordion-hd-last-collapsed {
-    border-bottom-color: #ececec;
+    border-bottom-color: #fff;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:38 */
 .x-accordion-item .x-accordion-body {
@@ -15327,7 +15326,7 @@ a.x-monthpicker-yearnav-button:hover {
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:44 */
 .x-accordion-hd .x-tool-img {
     background-image: url(images/tools/tool-sprites-dark.png);
-    background-color: #ececec;
+    background-color: #fff;
     color: #5fa2dd;
 }
 /* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:58 */
@@ -15761,7 +15760,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     padding: 8px 10px 8px 10px;
     border-width: 0;
@@ -15779,7 +15777,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15880,7 +15877,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -15981,7 +15977,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -16082,7 +16077,6 @@ div.x-border-layout-ct {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
     border-radius: 0px;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -16213,32 +16207,4 @@ div.x-border-layout-ct {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-}
-/* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1831 */
-.x-tab-default-right.x-tab-focus.x-tab-over {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1860 */
-.x-tab-default-right.x-tab-focus.x-tab-active {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-/* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1886 */
-.x-tab-default-bottom {
-    margin: 0 4px 0 0;
-}
-/* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1890 */
-.x-tab-default-bottom.x-rtl {
-    margin: 0 0 0 4px;
-}
-/* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1895 */
-.x-tab-default-bottom.x-tab-rotate-left {
-    margin: 0 0 0 4px;
-}
-/* C:/hhnext/chicken/Chicken/Chicken/Scripts/ext/classic/theme-neutral/sass/src/tab/Tab.scss:1899 */
-.x-tab-default-bottom.x-tab-rotate-left.x-rtl {
-    margin: 0 4px 0 0;
 }

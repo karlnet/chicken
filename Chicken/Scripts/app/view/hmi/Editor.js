@@ -269,7 +269,7 @@ Ext.define('MyApp2.view.hmi.Editor', {
         {
             xtype: 'panel',
             region: 'west',
-            width: 130,
+            width: 200,
             split: {
                 size: 5
             },
@@ -290,7 +290,7 @@ Ext.define('MyApp2.view.hmi.Editor', {
                 },
                 defaultType: 'button',
                 defaults: {
-                    width: 60
+                    width: 80
                 },
                 items: [{
                         text: 'pointer',

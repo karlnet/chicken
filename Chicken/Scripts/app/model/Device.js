@@ -21,11 +21,12 @@ Ext.define('MyApp2.model.Device', {
         { name: 'address', type: 'string' },
         { name: 'config', type: 'string', convert: null },
         { name: 'comment', type: 'string' },
-        { name: 'offtime', type: 'string' },
-        { name: 'onlinetime', type: 'string', convert: null },
-        { name: 'createtime', type: 'string' },
+        { name: 'offtime', type: 'date', dateFormat: 'Y-m-d' },
+        { name: 'onlinetime', type: 'date', dateFormat: 'Y-m-d' },
+        { name: 'createtime', type: 'date', dateFormat: 'Y-m-d' },
         { name: 'token', type: 'string' },
         { name: 'projectId', type: 'string' },
         { name: 'is_gateway', type: 'string', defaultValue: true }
     ]
+
 });

@@ -10,15 +10,15 @@ Ext.define('MyApp2.view.Viewport', {
         align: 'stretch'
     },
 
-    items: [
-            {
-                xtype: 'app-header',
-                height: 50,
-                id: 'app-header'
-            },
-            {
-                xtype: 'app-main', flex: 1
-            }
-        ]
+    items: [{
+            xtype: 'app-header',
+            height: 50,
+            id: 'app-header'
+        },
+        {
+            xtype: 'app-main',
+            flex: 1
+        }
+    ]
 
 });

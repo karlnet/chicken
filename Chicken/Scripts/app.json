@@ -66,10 +66,11 @@
      */
     "requires": [
         "font-awesome",
-		"ux",
-		"locale"
+        "ux",
+        "locale",
+        "charts"
     ],
-	"locale":"zh_CN",
+    "locale": "zh_CN",
     /**
      * Fashion build configuration properties.
      */
@@ -216,9 +217,8 @@
      *      }
      *
      */
-    "js": [
-        {
-            "path": "${framework.dir}/build/ext-all-rtl-debug.js"
+    "js": [{
+            "path": "${framework.dir}/build/ext-all-debug.js"
         },
         {
             "path": "app.js",
@@ -253,8 +253,7 @@
      *          "update": ""      // OPTIONAL
      *      }
      */
-    "css": [
-        {
+    "css": [{
             // this entry uses an ant variable that is the calculated
             // value of the generated output css file for the app,
             // defined in .sencha/app/defaults.properties
@@ -262,7 +261,7 @@
             "bundle": true,
             "exclude": ["fashion"]
         },
-		{
+        {
             "path": "./resources/css/hhnext.css"
         }
     ],
@@ -272,21 +271,21 @@
      * are supported.
      *
      */
-     "loader": {
-         // This property controls how the loader manages caching for requests:
-         //
-         //   - true: allows requests to receive cached responses
-         //   - false: disable cached responses by adding a random "cache buster"
-         //   - other: a string (such as the build.timestamp shown here) to allow
-         //     requests to be cached for this build.
-         //
-         "cache": false,
+    "loader": {
+        // This property controls how the loader manages caching for requests:
+        //
+        //   - true: allows requests to receive cached responses
+        //   - false: disable cached responses by adding a random "cache buster"
+        //   - other: a string (such as the build.timestamp shown here) to allow
+        //     requests to be cached for this build.
+        //
+        "cache": false,
 
-         // When "cache" is not true, this value is the request parameter used
-         // to control caching.
-         //
-         "cacheParam": "_dc"
-     },
+        // When "cache" is not true, this value is the request parameter used
+        // to control caching.
+        //
+        "cacheParam": "_dc"
+    },
 
     /**
      * Settings specific to production builds.
@@ -312,8 +311,7 @@
     /**
      * Settings specific to testing builds.
      */
-    "testing": {
-    },
+    "testing": {},
 
     /**
      * Settings specific to development builds.
@@ -412,20 +410,20 @@
 
 
     /**
-    * Controls for localStorage caching
-    *   "cache": {
-    *       // This property controls whether localStorage caching of this manifest file is on or off.
-    *       // if disabled no deltas will be generated during a build and full updates will be disabled
-    *       "enable": false,
-    *
-    *       // This property allows for global toggle of deltas.
-    *       // If set to a string the value will be used as the path to where deltas will be generated relative to you build.
-    *       // If set to a Truthy Value the default path ok "deltas" will be used
-    *       // If set to a Falsey value or if this property is not present deltas will be disabled and not generated.
-    *
-    *       "deltas": "deltas"
-    *   }
-    */
+     * Controls for localStorage caching
+     *   "cache": {
+     *       // This property controls whether localStorage caching of this manifest file is on or off.
+     *       // if disabled no deltas will be generated during a build and full updates will be disabled
+     *       "enable": false,
+     *
+     *       // This property allows for global toggle of deltas.
+     *       // If set to a string the value will be used as the path to where deltas will be generated relative to you build.
+     *       // If set to a Truthy Value the default path ok "deltas" will be used
+     *       // If set to a Falsey value or if this property is not present deltas will be disabled and not generated.
+     *
+     *       "deltas": "deltas"
+     *   }
+     */
 
     "cache": {
         "enable": false,
@@ -460,12 +458,10 @@
      * Extra resources to be copied into the resource folder as specified in the "resources"
      * property of the "output" object. Folders specified in this list will be deeply copied.
      */
-    "resources": [
-        {
-            "path": "resources",
-            "output": "shared"
-        }
-    ],
+    "resources": [{
+        "path": "resources",
+        "output": "shared"
+    }],
 
     /**
      * File / directory name patttern to ignore when copying to the builds. Must be a
