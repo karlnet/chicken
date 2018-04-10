@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chicken", "Chicken\Chicken.csproj", "{0D7443B1-9948-4F7B-8DD4-843DD4539913}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtIOT", "Chicken\HtIOT.csproj", "{0D7443B1-9948-4F7B-8DD4-843DD4539913}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{F3C43E61-5C8B-4D66-BDEC-D9E3F7F454D1}"
 EndProject

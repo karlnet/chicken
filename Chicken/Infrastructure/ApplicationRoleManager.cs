@@ -1,5 +1,4 @@
-﻿using Chicken.Data.Entities;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -8,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Chicken.Infrastructure
+namespace HtIOT.Infrastructure
 {
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {

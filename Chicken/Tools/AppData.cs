@@ -1,4 +1,6 @@
-﻿using Chicken.YFModels;
+﻿
+
+using HtIOT.Models;
 using StackExchange.Redis;
 using System;
 using System.Collections.Concurrent;
@@ -7,7 +9,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 
-namespace Chicken.Tools
+namespace HtIOT.Tools
 {
     public class AppData
     {

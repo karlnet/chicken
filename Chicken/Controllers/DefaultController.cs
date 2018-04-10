@@ -1,4 +1,4 @@
-﻿using Chicken.DTOs;
+﻿using HtIOT.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Chicken.Tools;
+using HtIOT.Tools;
 
-namespace Chicken.Controllers
+namespace HtIOT.Controllers
 {
     [RoutePrefix("test")]
     public class DefaultController : ApiController

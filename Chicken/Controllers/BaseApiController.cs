@@ -1,8 +1,7 @@
-﻿using Chicken.Data;
-using Chicken.Data.Entities;
-using Chicken.DTOs;
-using Chicken.Infrastructure;
-using Chicken.Tools;
+﻿using HtIOT.Data;
+using HtIOT.DTOs;
+using HtIOT.Infrastructure;
+using HtIOT.Tools;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using StackExchange.Redis;
@@ -14,7 +13,7 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 
-namespace Chicken.Controllers
+namespace HtIOT.Controllers
 {
     public class BaseApiController : ApiController
     {

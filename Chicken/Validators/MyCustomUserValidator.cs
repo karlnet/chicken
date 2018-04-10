@@ -1,5 +1,5 @@
 ﻿
-using Chicken.Infrastructure;
+using HtIOT.Infrastructure;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;

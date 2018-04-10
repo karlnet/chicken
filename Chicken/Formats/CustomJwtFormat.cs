@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using Thinktecture.IdentityModel.Tokens;
 
-namespace Chicken.Formats
+namespace HtIOT.Formats
 {
     public class CustomJwtFormat : ISecureDataFormat<AuthenticationTicket>
     {

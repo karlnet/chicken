@@ -9,7 +9,7 @@ using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Chicken.Services
+namespace HtIOT.Services
 {
     public class EmailService : IIdentityMessageService
     {

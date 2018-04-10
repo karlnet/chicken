@@ -1,5 +1,5 @@
-﻿using Chicken.Data.Entities;
-using Chicken.Services;
+﻿using HtIOT.Data.Entities;
+using HtIOT.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Chicken.Infrastructure
+namespace HtIOT.Infrastructure
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {

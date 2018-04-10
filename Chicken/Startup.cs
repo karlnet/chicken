@@ -7,13 +7,12 @@ using System.Net.Http.Formatting;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
 using Microsoft.Practices.Unity;
-using Chicken.Resolvers;
-using Chicken.Data;
-using Chicken.Data.Entities;
+using HtIOT.Resolvers;
+
 using System.Configuration;
 using Microsoft.Owin.Security.OAuth;
-using Chicken.Providers;
-using Chicken.Formats;
+using HtIOT.Providers;
+using HtIOT.Formats;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security;
@@ -21,16 +20,17 @@ using Swashbuckle.Application;
 using System.Reflection;
 using System.IO;
 using System.Xml.XPath;
-using Chicken.Tools;
+using HtIOT.Tools;
 using Microsoft.AspNet.SignalR;
-using Chicken.signalR;
+using HtIOT.signalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using Chicken.Infrastructure;
+using HtIOT.Infrastructure;
 using StackExchange.Redis;
+using HtIOT.Data;
 
-[assembly: OwinStartup(typeof(Chicken.Startup))]
+[assembly: OwinStartup(typeof(HtIOT.Startup))]
 
-namespace Chicken
+namespace HtIOT
 {
     public class Startup
     {
@@ -77,7 +77,7 @@ namespace Chicken
 
         private static string GetXmlCommentsPath()
         {
-            return System.String.Format(@"{0}\bin\chicken.XML", System.AppDomain.CurrentDomain.BaseDirectory);
+            return System.String.Format(@"{0}\bin\HtIOT.XML", System.AppDomain.CurrentDomain.BaseDirectory);
         }
 
         private void ConfigureOAuthTokenGeneration(IAppBuilder app)

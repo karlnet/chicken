@@ -1,4 +1,4 @@
-﻿using Chicken.Infrastructure;
+﻿using HtIOT.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http.Routing;
 
-namespace Chicken.DTOs
+namespace HtIOT.DTOs
 {
     public class ModelFactory
     {

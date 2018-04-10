@@ -1,4 +1,4 @@
-namespace Chicken.Data.Entities
+namespace HtIOT.Data.Entities
 {
     using System;
     using System.Collections.Generic;

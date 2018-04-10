@@ -1,8 +1,8 @@
-﻿using Chicken.DTOs;
-using Chicken.Infrastructure;
-using Chicken.Models;
-using Chicken.Tools;
-using Chicken.YFModels;
+﻿using HtIOT.DTOs;
+using HtIOT.Infrastructure;
+using HtIOT.Models;
+using HtIOT.Tools;
+
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
 using StackExchange.Redis;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
-namespace Chicken.Controllers
+namespace HtIOT.Controllers
 {
     //[Authorize]
     /// <summary>

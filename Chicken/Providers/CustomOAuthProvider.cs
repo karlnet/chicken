@@ -1,7 +1,7 @@
-﻿using Chicken.Data.Entities;
-using Chicken.Infrastructure;
-using Chicken.Tools;
-using Chicken.YFModels;
+﻿using HtIOT.Data;
+using HtIOT.Infrastructure;
+using HtIOT.Models;
+using HtIOT.Tools;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -13,38 +13,39 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Chicken.Providers
+namespace HtIOT.Providers
 {
     public class CustomOAuthProvider : OAuthAuthorizationServerProvider
     {
-        private async Task<UserInfo> canLogin(AppDbContext appDbContext, string username,string password)
-        {
-            string URI = "http://api.yfiot.com/service/getToken";
-            var values = new Dictionary<string, string>{
-                     { "appid", AppData.ChickenAppId },
-                     { "userName",username },
-                     { "password", password },
-                     { "ttl", "1" }
-            };
+        //private async Task<UserInfo> canLogin(AppDbContext appDbContext, string username,string password)
+        //{
+        //    string URI = "http://api.yfiot.com/service/getToken";
+        //    var values = new Dictionary<string, string>{
+        //             { "appid", AppData.ChickenAppId },
+        //             { "userName",username },
+        //             { "password", password },
+        //             { "ttl", "1" }
+        //    };
 
-            var result = await HttpHelper.GetValuesFromAPI(URI, values);
-            if (result.info.status == 0)
-            {               
-                return null;
-            }
+            //var result = await HttpHelper.GetValuesFromAPI(URI, values);
 
-            JObject bodyAsJson = JObject.Parse(result.body.ToString());
-            UserInfo userInfo = bodyAsJson.ToObject<UserInfo>();
+            //if (result.info.status == 0)
+            //{               
+            //    return null;
+            //}
 
-            var userProject = appDbContext.YFUserProjects.Where(m => m.UserID_int == userInfo.userId).ToList();
-            userProject.ForEach(m => {
-                userInfo.userProjectids.Add(m.ProjectID_int);
-            });
+            //JObject bodyAsJson = JObject.Parse(result.body.ToString());
+            //UserInfo userInfo = bodyAsJson.ToObject<UserInfo>();
 
-            AppData.UserList.AddOrUpdate(userInfo.userId, userInfo, (key, exitVal) => { return userInfo; });
+            //var userProject = appDbContext.YFUserProjects.Where(m => m.UserID_int == userInfo.userId).ToList();
+            //userProject.ForEach(m => {
+            //    userInfo.userProjectids.Add(m.ProjectID_int);
+            //});
 
-            return userInfo;
-        }
+            //AppData.UserList.AddOrUpdate(userInfo.userId, userInfo, (key, exitVal) => { return userInfo; });
+
+        //    return userInfo;
+        //}
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
@@ -61,7 +62,7 @@ namespace Chicken.Providers
 
             var appDbContext = context.OwinContext.Get<AppDbContext>();
 
-            UserInfo userInfo = await canLogin(appDbContext,context.UserName, context.Password);
+            UserInfo userInfo = null;  // await canLogin(appDbContext,context.UserName, context.Password);
             if (null == userInfo)
                 return;
 

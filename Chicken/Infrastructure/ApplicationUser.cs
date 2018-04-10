@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Chicken.Infrastructure
+namespace HtIOT.Infrastructure
 {
     public class ApplicationUser : IdentityUser
     {

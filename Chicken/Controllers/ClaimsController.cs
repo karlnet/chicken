@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 
-namespace Chicken.Controllers
+namespace HtIOT.Controllers
 {
     [RoutePrefix("api/claims")]
     public class ClaimsController : BaseApiController

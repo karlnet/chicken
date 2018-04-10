@@ -1,5 +1,5 @@
-﻿using Chicken.Data.Entities;
-using Chicken.Infrastructure;
+﻿using HtIOT.Data.Entities;
+using HtIOT.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Chicken.Data
+namespace HtIOT.Data
 {
     public static class EFHelper
     {

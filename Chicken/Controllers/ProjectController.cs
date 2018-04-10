@@ -1,7 +1,7 @@
-﻿using Chicken.Data;
-using Chicken.DTOs;
-using Chicken.Infrastructure;
-using Chicken.Tools;
+﻿using HtIOT.Data;
+using HtIOT.DTOs;
+using HtIOT.Infrastructure;
+using HtIOT.Tools;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-namespace Chicken.Controllers
+namespace HtIOT.Controllers
 {
     [RoutePrefix("scripts/project")]
     public class ProjectController : BaseApiController

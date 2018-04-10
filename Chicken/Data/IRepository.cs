@@ -1,20 +1,13 @@
-﻿using Chicken.Data.Entities;
+﻿using HtIOT.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Chicken.Data
+namespace HtIOT.Data
 {
     public interface IRepository
     {
-        YFBatchRecord GetLastBatchInfo(int projectid);
-        bool HasProject(int projectid);
-        YFBatchRecordAddChicken GetLastAddChickenInfo(int projectid, int batchid);
-        YFChickenDailyReport GetLastDayReport(int projectid, int batchid);
-        IQueryable<YFChickenDailyReport> GetAllDayReport(int projectid, int batchid);
-        int GetDayAddChickenAmount(int projectid, int batchid);
-        IQueryable<YFProject> GetUserProjects(List<int> projectids);
-        IQueryable<YFChickenHouseInfo> GetUserHouses(List<int> projectids);
+
     }
 }

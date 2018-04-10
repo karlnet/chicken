@@ -1,4 +1,4 @@
-namespace Chicken.Infrastructure
+namespace HtIOT.Infrastructure
 {
     using System;
     using System.Collections.Generic;

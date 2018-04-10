@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Dependencies;
 
-namespace Chicken.Resolvers
+namespace HtIOT.Resolvers
 {
     public class UnityResolver : IDependencyResolver
     {

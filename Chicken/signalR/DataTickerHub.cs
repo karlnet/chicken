@@ -6,7 +6,7 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using System.Threading.Tasks;
 
-namespace Chicken.signalR
+namespace HtIOT.signalR
 {
     [HubName("DataTickerHub")]
     public class DataTickerHub : Hub

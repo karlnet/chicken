@@ -6,9 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using static Chicken.Models.RoleBindingModels;
+using static HtIOT.Models.RoleBindingModels;
 
-namespace Chicken.Controllers
+namespace HtIOT.Controllers
 {
     [Authorize(Roles = "Admin")]
     [RoutePrefix("api/roles")]

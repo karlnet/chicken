@@ -59,9 +59,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chicken\Chicken.csproj">
+    <ProjectReference Include="..\Chicken\HtIOT.csproj">
       <Project>{0D7443B1-9948-4F7B-8DD4-843DD4539913}</Project>
-      <Name>Chicken</Name>
+      <Name>HtIOT</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

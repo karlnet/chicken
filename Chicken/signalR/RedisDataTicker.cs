@@ -11,9 +11,9 @@ using Microsoft.ServiceBus.Messaging;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNet.SignalR.Messaging;
 using System.Configuration;
-using Chicken.Tools;
+using HtIOT.Tools;
 
-namespace Chicken.signalR
+namespace HtIOT.signalR
 {
 
     public class MyUser

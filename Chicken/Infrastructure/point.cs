@@ -1,4 +1,4 @@
-namespace Chicken.Infrastructure
+namespace HtIOT.Infrastructure
 {
     using Newtonsoft.Json;
     using System;

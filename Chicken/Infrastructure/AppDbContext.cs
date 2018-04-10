@@ -1,12 +1,11 @@
-namespace Chicken.Infrastructure
+namespace HtIOT.Infrastructure
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using Chicken.Infrastructure;
+    using HtIOT.Infrastructure;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Data.Entities;
 
     public partial class AppDbContext :  IdentityDbContext<ApplicationUser>
 
@@ -15,21 +14,7 @@ namespace Chicken.Infrastructure
             : base("name=AppDbContext")
         {
         }
-        public virtual DbSet<YFIOIntValue> YFIOIntValues { get; set; }
-        public virtual DbSet<YFProjectIO> YFProjectIOs { get; set; }
-        public virtual DbSet<YFProjectWeightInfo> YFProjectWeightInfos { get; set; }
-        public virtual DbSet<YFBabyChickenSupplier> YFBabyChickenSuppliers { get; set; }
-        public virtual DbSet<YFChickenHouseInfo> YFChickenHouseInfos { get; set; }
-        public virtual DbSet<YFFodderSupplier> YFFodderSuppliers { get; set; }
-
-        public virtual DbSet<InitChickenIndex> InitChickenIndexs { get; set; }
-        public virtual DbSet<YFIOFloatValue> YFIOFloatValues { get; set; }
-        public virtual DbSet<YFBatchRecord> YFBatchRecords { get; set; }
-        public virtual DbSet<YFBatchRecordAddChicken> YFBatchRecordAddChickens { get; set; }
-        public virtual DbSet<YFChickenDailyReport> YFChickenDailyReports { get; set; }
-        public virtual DbSet<YFProject> YFProjects { get; set; }
-        public virtual DbSet<YFUserInfo> YFUserInfoes { get; set; }
-        public virtual DbSet<YFUserProject> YFUserProjects { get; set; }
+        
         public virtual DbSet<Device> devices { get; set; }
         public virtual DbSet<Platform> platforms { get; set; }
         public virtual DbSet<Point> points { get; set; }
